@@ -1,0 +1,16 @@
+{
+  "name": "kwasa",
+  "version": "1.0.0",
+  "license": "MIT",
+  "source": "src/index.html",
+  "scripts": {
+    "start": "parcel",
+    "build": "rm -rf ./dist && parcel build && cp ./src/public/ar/targets.mind ./dist/"
+  },
+  "devDependencies": {
+    "parcel": "^2.7.0"
+  },
+  "dependencies": {
+    "three": "^0.149.0"
+  }
+}
