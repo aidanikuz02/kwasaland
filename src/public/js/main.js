@@ -233,10 +233,31 @@ function setupNavListeners() {
 
 function overlayListeners() {
   const arButton = document.querySelector("#ar-button");
+  const leftButtonInstruction = document.querySelector("#left-button-instruction")
+  const rightButtonInstruction = document.querySelector("#right-button-instruction")
   const instructions = document.querySelector("#instructions-container");
   const closeInstructions = document.querySelector("#close-instructions");
   const openInstructions = document.querySelector("#open-instructions");
   const reloadHitTest = document.querySelector("#reload-button");
+  let page = 0
+  rightButtonInstruction.addEventListener("click", function () {
+    if(page === 0){
+      page++
+      rightButtonInstruction.setAttribute("src", "#right-button-disabled");
+      instructions.style.backgroundImage = "url(../images/KDAR_Instruction2.webp')"
+      leftButtonInstruction.setAttribute("src", "#left-button");
+    }
+  })
+  
+  leftButtonInstruction.addEventListener("click", function () {
+    if(page === 1){
+      page--
+      leftButtonInstruction.setAttribute("src", "#left-button-disabled");
+      instructions.style.backgroundImage = "url('../images/KDAR_Instruction1.webp')" 
+      rightButtonInstruction.setAttribute("src", "#right-button");
+    }
+  })
+  
   arButton.addEventListener("click", function () {
     const sceneEl = document.querySelector("a-scene");
     sceneEl.enterAR();
