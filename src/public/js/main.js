@@ -243,21 +243,21 @@ function overlayListeners() {
   rightButtonInstruction.addEventListener("click", function () {
     if(page === 0){
       page++
-      rightButtonInstruction.setAttribute("src", "#right-button-disabled");
-      instructions.style.backgroundImage = "url(../images/KDAR_Instruction2.webp')"
-      leftButtonInstruction.setAttribute("src", "#left-button");
+      rightButtonInstruction.setAttribute("src", "./public/images/panel/right-button-disabled.webp");
+      instructions.style.backgroundImage = "url(./public/images/KDAR_Instruction2.webp')"
+      leftButtonInstruction.setAttribute("src", "./public/images/panel/left-button.webp");
     }
   })
   
   leftButtonInstruction.addEventListener("click", function () {
     if(page === 1){
       page--
-      leftButtonInstruction.setAttribute("src", "#left-button-disabled");
-      instructions.style.backgroundImage = "url('../images/KDAR_Instruction1.webp')" 
-      rightButtonInstruction.setAttribute("src", "#right-button");
+      leftButtonInstruction.setAttribute("src", "./public/images/panel/left-button-disabled.webp");
+      instructions.style.backgroundImage = "url('./public/images/KDAR_Instruction1.webp')" 
+      rightButtonInstruction.setAttribute("src", "./public/images/panel/right-button.webp");
     }
   })
-  
+
   arButton.addEventListener("click", function () {
     const sceneEl = document.querySelector("a-scene");
     sceneEl.enterAR();
