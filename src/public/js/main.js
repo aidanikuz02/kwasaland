@@ -233,28 +233,34 @@ function setupNavListeners() {
 
 function overlayListeners() {
   const arButton = document.querySelector("#ar-button");
-  const leftButtonInstruction = document.querySelector("#left-button-instruction")
-  const rightButtonInstruction = document.querySelector("#right-button-instruction")
+  const leftButtonInstructionActive = document.querySelector("#left-button-instruction-active")
+  const leftButtonInstructionInactive = document.querySelector("#left-button-instruction-inactive")
+  const rightButtonInstructionActive = document.querySelector("#right-button-instruction-active")
+  const rightButtonInstructionInactive = document.querySelector("#right-button-instruction-inactive")
   const instructions = document.querySelector("#instructions-container");
   const closeInstructions = document.querySelector("#close-instructions");
   const openInstructions = document.querySelector("#open-instructions");
   const reloadHitTest = document.querySelector("#reload-button");
   let page = 0
-  rightButtonInstruction.addEventListener("click", function () {
+  rightButtonInstructionActive.addEventListener("click", function () {
     if(page === 0){
       page++
-      rightButtonInstruction.src = "./images/panel/right-button-disabled.webp";
-      instructions.style.backgroundImage = "url(./images/KDAR_Instruction2.webp')";
-      leftButtonInstruction.src = "./images/panel/left-button.webp";
+      rightButtonInstructionActive.style.display = 'none'
+      rightButtonInstructionInactive.style.display = 'block'
+      leftButtonInstructionActive.style.display = 'block'
+      leftButtonInstructionInactive.style.display = 'none'
+      instructions.style.backgroundImage = "url(../images/KDAR_Instruction2.webp')";
     }
   })
   
-  leftButtonInstruction.addEventListener("click", function () {
+  leftButtonInstructionActive.addEventListener("click", function () {
     if(page === 1){
       page--
-      leftButtonInstruction.src = "./images/panel/left-button-disabled.webp";
-      instructions.style.backgroundImage = "url('./images/KDAR_Instruction1.webp')" ;
-      rightButtonInstruction.src = "./images/panel/right-button.webp";
+      rightButtonInstructionActive.style.display = 'block'
+      rightButtonInstructionInactive.style.display = 'none'
+      leftButtonInstructionActive.style.display = 'none'
+      leftButtonInstructionInactive.style.display = 'block'
+      instructions.style.backgroundImage = "url('../images/KDAR_Instruction1.webp')" ;
     }
   })
 
