@@ -237,35 +237,29 @@ function overlayListeners() {
   const leftButtonInstructionInactive = document.querySelector("#left-button-instruction-inactive")
   const rightButtonInstructionActive = document.querySelector("#right-button-instruction-active")
   const rightButtonInstructionInactive = document.querySelector("#right-button-instruction-inactive")
+  const instructionsDot1 = document.querySelector("#instruction-dot1")
+  const instructionsDot2 = document.querySelector("#instruction-dot2")
   const instructions = document.querySelector("#instructions-container");
   const closeInstructions = document.querySelector("#close-instructions");
   const openInstructions = document.querySelector("#open-instructions");
   const reloadHitTest = document.querySelector("#reload-button");
-  let page = 0
+  
   rightButtonInstructionActive.addEventListener("click", function () {
-    if(page === 0){
-      page++
-      rightButtonInstructionActive.style.display = "none"
-      rightButtonInstructionInactive.style.display = "block"
-      // .src = "../images/panel/right-button-disabled.webp";
-      // instructions.style.backgroundImage = "url(../images/KDAR_Instruction2.webp')";
-      leftButtonInstructionActive.style.display = "block"
-      leftButtonInstructionInactive.style.display = "none"
-      // .src = "../images/panel/left-button.webp";
-    }
+    rightButtonInstructionActive.style.display = "none"
+    rightButtonInstructionInactive.style.display = "block"
+    leftButtonInstructionActive.style.display = "block"
+    leftButtonInstructionInactive.style.display = "none"
+    instructionsDot1.style.display = "none"
+    instructionsDot2.style.display = "block"
   })
   
   leftButtonInstructionActive.addEventListener("click", function () {
-    if(page === 1){
-      page--
-      leftButtonInstructionActive.style.display = "none"
-      leftButtonInstructionInactive.style.display = "block"
-      // .src = "../images/panel/left-button-disabled.webp";
-      // instructions.style.backgroundImage = "url('../images/KDAR_Instruction1.webp')" ;
-      rightButtonInstructionActive.style.display = "block"
-      rightButtonInstructionInactive.style.display = "none"
-      // .src = "../images/panel/right-button.webp";
-    }
+    leftButtonInstructionActive.style.display = "none"
+    leftButtonInstructionInactive.style.display = "block"
+    rightButtonInstructionActive.style.display = "block"
+    rightButtonInstructionInactive.style.display = "none"
+    instructionsDot1.style.display = "block"
+    instructionsDot2.style.display = "none"
   })
 
   arButton.addEventListener("click", function () {
