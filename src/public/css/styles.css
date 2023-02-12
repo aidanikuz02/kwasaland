@@ -86,6 +86,18 @@
   height: 32px;
 }
 
+.page-dots {
+  position: absolute;
+  bottom: 120px;
+  cursor: pointer
+}
+
+#position-gif {
+  width: 200px;
+  height: 125px;
+  position: absolute;
+}
+
 @media only screen and (min-height: 600px) {
   #close-instructions {
     bottom: -3px;
@@ -96,14 +108,13 @@
     bottom: 8px;
   }
 }
-@media only screen and (min-height: 780px) and (max-height: 800px) {
+@media only screen and (min-height: 880px){
   #close-instructions {
-    bottom: 45px;
+    bottom: 75px;
   }
-}
-@media only screen and (min-height: 810px) and (max-height: 830px) {
-  #close-instructions {
-    bottom: 12px;
+
+  #position-gif {
+    left: 30px;
   }
 }
 
