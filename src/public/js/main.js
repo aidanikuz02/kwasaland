@@ -243,18 +243,18 @@ function overlayListeners() {
   rightButtonInstruction.addEventListener("click", function () {
     if(page === 0){
       page++
-      rightButtonInstruction.setAttribute("src", "./public/images/panel/right-button-disabled.webp");
-      instructions.style.backgroundImage = "url(./public/images/KDAR_Instruction2.webp')"
-      leftButtonInstruction.setAttribute("src", "./public/images/panel/left-button.webp");
+      rightButtonInstruction.src = "./images/panel/right-button-disabled.webp";
+      instructions.style.backgroundImage = "url(./images/KDAR_Instruction2.webp')";
+      leftButtonInstruction.src = "./images/panel/left-button.webp";
     }
   })
   
   leftButtonInstruction.addEventListener("click", function () {
     if(page === 1){
       page--
-      leftButtonInstruction.setAttribute("src", "./public/images/panel/left-button-disabled.webp");
-      instructions.style.backgroundImage = "url('./public/images/KDAR_Instruction1.webp')" 
-      rightButtonInstruction.setAttribute("src", "./public/images/panel/right-button.webp");
+      leftButtonInstruction.src = "./images/panel/left-button-disabled.webp";
+      instructions.style.backgroundImage = "url('./images/KDAR_Instruction1.webp')" ;
+      rightButtonInstruction.src = "./images/panel/right-button.webp";
     }
   })
 
