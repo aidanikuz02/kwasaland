@@ -11,6 +11,7 @@ function setupSceneListener() {
   });
 
   sceneEl.addEventListener("enter-vr", function () {
+    console.log('enter vr')
     if (this.is("ar-mode")) {
       loadingScreen.setAttribute("style", "display:none");
       // instructions.setAttribute("style", "display:flex");
@@ -68,6 +69,7 @@ function openFullscreen(elem) {
 }
 
 function setupFindUsListeners() {
+  console.log('setupFindUsListeners')
   const link = document.querySelector("#find-us-link");
   const els = document.querySelectorAll(".contact-button");
   for (let el of els) {
@@ -77,6 +79,7 @@ function setupFindUsListeners() {
   }
 }
 function setupDownloadListener() {
+  console.log('setupDownloadListener')
   const link = document.querySelector("#download-link");
   const els = document.querySelectorAll(".download-pdf");
   for (let el of els) {
@@ -87,6 +90,7 @@ function setupDownloadListener() {
 }
 
 function setupVideoPlayerListeners() {
+  console.log('setupVideoPlayerListeners')
   const player = document.querySelector("#video-player");
   const els = document.querySelectorAll(".video-element");
   for (let el of els) {
