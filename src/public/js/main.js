@@ -302,7 +302,7 @@ async function init() {
   setupFindUsListeners();
   setupDownloadListener();
   setupVideoPlayerListeners();
-  setupNavListeners();
+  // setupNavListeners();
   setupPageNavListeners("left");
   setupPageNavListeners("right");
   setupGalleryNavListeners();
