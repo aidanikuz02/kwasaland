@@ -6,7 +6,7 @@
     <script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
     <!-- <script src="./public/js/mindar-image-aframe.prod.js"></script> -->
     <!-- <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script> -->
-    <script src="./public/js/aframe-components.js"></script>
+    <!-- <script src="./public/js/aframe-components.js"></script> -->
     <script src="./public/js/utils.js"></script>
     <script src="./public/js/main.js"></script>
 
@@ -22,7 +22,6 @@
   <body style="display: flex; justify-content: center">
     <div style="position: relative; max-width: 420px; width: 100%">
       <a-scene
-        8thwall-ar
         landing-page
         xrextras-loading
         xrextras-runtime-error
@@ -156,17 +155,9 @@
           light="castShadow:true;type:directional"
           position="10 10 -10"
         ></a-light>
-        <!-- <a-circle
-        id="reticle"
-        radius="0.2"
-        src="#circle-panel-base"
-        position="0 -1 0"
-        rotation="-90 0 0"
-        side="double"
-      ></a-circle> -->
         <a-entity id="poster-target" visible="true" hide-on-enter-ar>
           <a-entity position="0 20 0" rotation="0 0 0" scale="0.2 0.2 0.2">
-            <a-entity id="left-circle-panel" position="-2.2 0 0">
+            <!-- <a-entity id="left-circle-panel" position="-2.2 0 0">
               <a-circle radius="0.6" src="#circle-panel-base" side="double"></a-circle>
               <a-circle
                 id="left-circle-button-entity"
@@ -243,7 +234,7 @@
                 ></a-image>
               </a-entity>
               <a-entity id="left-panel-content" position="0 0 0.11" page="1">
-                <!-- Page 1 -->
+                Page 1 
                 <a-entity id="left-page-1" visible="true">
                   <a-image
                     width="0.8"
@@ -260,7 +251,7 @@
                     class="video-element left-click"
                   ></a-video>
                 </a-entity>
-                <!-- Page 2 -->
+                Page 2 
                 <a-entity id="left-page-2" visible="false">
                   <a-image
                     width="0.8"
@@ -277,7 +268,7 @@
                     class="video-element left-click"
                   ></a-video>
                 </a-entity>
-                <!-- Page 3 -->
+                Page 3 
                 <a-entity id="left-page-3" visible="false">
                   <a-image
                     width="4"
@@ -286,7 +277,7 @@
                     position="-0.2 0.05 0.01"
                   ></a-image>
                 </a-entity>
-                <!-- Page 4 -->
+                Page 4
                 <a-entity id="left-page-4" visible="false">
                   <a-image
                     width="4"
@@ -295,7 +286,7 @@
                     position="-0.2 0.05 0.01"
                   ></a-image>
                 </a-entity>
-                <!-- Page 5 -->
+                Page 5 
                 <a-entity id="left-page-5" visible="false">
                   <a-image
                     width="4"
@@ -311,7 +302,7 @@
                     class="left-click download-pdf"
                   ></a-image>
                 </a-entity>
-                <!-- Page 6 -->
+                Page 6
                 <a-entity id="left-page-6" visible="false">
                   <a-image
                     width="4"
@@ -320,7 +311,7 @@
                     position="-0.2 0.05 0.01"
                   ></a-image>
                 </a-entity>
-                <!-- Page 7 -->
+                Page 7
                 <a-entity id="left-page-7" visible="false">
                   <a-image
                     width="4"
@@ -329,7 +320,7 @@
                     position="-0.2 0.05 0.01"
                   ></a-image>
                 </a-entity>
-                <!-- Page 3 -->
+                Page 3
                 <a-entity id="left-page-3" visible="false">
                   <a-image
                     width="4"
@@ -338,7 +329,7 @@
                     position="-0.2 0.05 0.01"
                   ></a-image>
                 </a-entity>
-                <!-- Page 8 -->
+                Page 8
                 <a-entity id="left-page-8" visible="false">
                   <a-image
                     width="4"
@@ -347,7 +338,7 @@
                     position="-0.2 0.05 0.01"
                   ></a-image>
                 </a-entity>
-                <!-- Page 9 -->
+                Page 9
                 <a-entity id="left-page-9" visible="false">
                   <a-image
                     width="4"
@@ -356,7 +347,7 @@
                     position="-0.2 0.05 0.01"
                   ></a-image>
                 </a-entity>
-                <!-- Page 10 -->
+                Page 10
                 <a-entity id="left-page-10" visible="false">
                   <a-image
                     width="4"
@@ -365,7 +356,7 @@
                     position="-0.2 0.05 0.01"
                   ></a-image>
                 </a-entity>
-                <!-- Page 11 -->
+                Page 11
                 <a-entity id="left-page-11" visible="false">
                   <a-image
                     width="4"
@@ -374,7 +365,7 @@
                     position="-0.2 0.05 0.01"
                   ></a-image>
                 </a-entity>
-                <!-- Page 12 -->
+                Page 12
                 <a-entity id="left-page-12" visible="false">
                   <a-image
                     width="4"
@@ -383,7 +374,7 @@
                     position="-0.2 0.05 0.01"
                   ></a-image>
                 </a-entity>
-                <!-- Page 13 -->
+                Page 13
                 <a-entity id="left-page-13" visible="false">
                   <a-image
                     width="4"
@@ -392,7 +383,7 @@
                     position="-0.2 0.05 0.01"
                   ></a-image>
                 </a-entity>
-                <!-- Page 14 -->
+                Page 14
                 <a-entity id="left-page-14" visible="false">
                   <a-image
                     width="4"
@@ -401,7 +392,7 @@
                     position="-0.2 0.05 0.01"
                   ></a-image>
                 </a-entity>
-                <!-- Page 15 -->
+                Page 15
                 <a-entity id="left-page-15" visible="false">
                   <a-image
                     width="4"
@@ -410,7 +401,7 @@
                     position="-0.2 0.05 0.01"
                   ></a-image>
                 </a-entity>
-                <!-- Page 16 -->
+                Page 16
                 <a-entity id="left-page-16" visible="false">
                   <a-image
                     width="4"
@@ -419,7 +410,7 @@
                     position="-0.2 0.05 0.01"
                   ></a-image>
                 </a-entity>
-                <!-- Page 17 -->
+                Page 17
                 <a-entity id="left-page-17" visible="false">
                   <a-image
                     width="4"
@@ -428,7 +419,7 @@
                     position="-0.2 0.05 0.01"
                   ></a-image>
                 </a-entity>
-                <!-- Page 18 -->
+                Page 18
                 <a-entity id="left-page-18" visible="false">
                   <a-image
                     width="4"
@@ -535,7 +526,7 @@
                 ></a-image>
               </a-entity>
               <a-entity id="right-panel-content" position="0 0 0.11" page="1">
-                <!-- Page 1 -->
+                Page 1
                 <a-entity id="right-page-1" visible="true">
                   <a-image
                     width="4"
@@ -544,7 +535,7 @@
                     position="0.2 -0.13 0.01"
                   ></a-image>
                 </a-entity>
-                <!-- Page 2 -->
+                Page 2
                 <a-entity id="right-page-2" visible="false">
                   <a-image
                     width="4"
@@ -553,7 +544,7 @@
                     position="0.2 -0.13 0.01"
                   ></a-image>
                 </a-entity>
-                <!-- Page 3 -->
+                Page 3
                 <a-entity id="right-page-3" visible="false">
                   <a-image
                     width="4"
@@ -562,7 +553,7 @@
                     position="0.2 -0.13 0.01"
                   ></a-image>
                 </a-entity>
-                <!-- Page 4 -->
+                Page 4
                 <a-entity id="right-page-4" visible="false">
                   <a-image
                     width="4"
@@ -571,7 +562,7 @@
                     position="0.2 -0.13 0.01"
                   ></a-image>
                 </a-entity>
-                <!-- Page 5 -->
+                Page 5
                 <a-entity id="right-page-5" visible="false">
                   <a-image
                     id="gallery-main"
@@ -645,7 +636,7 @@
                     ></a-plane>
                   </a-entity>
                 </a-entity>
-                <!-- Page 6 -->
+                Page 6
                 <a-entity id="right-page-6" visible="false">
                   <a-image
                     width="4"
@@ -682,7 +673,7 @@
             </a-entity>
           </a-entity>
         </a-entity>
-      </a-scene>
+      </a-scene>-->
       <a
         id="find-us-link"
         href="https://www.kwasadamansara.com.my/"
