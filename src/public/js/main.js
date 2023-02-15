@@ -299,9 +299,9 @@ function overlayListeners() {
 }
 
 async function init() {
-  // setupFindUsListeners();
-  // setupDownloadListener();
-  // setupVideoPlayerListeners();
+  setupFindUsListeners();
+  setupDownloadListener();
+  setupVideoPlayerListeners();
   // setupNavListeners();
   // setupPageNavListeners("left");
   // setupPageNavListeners("right");
