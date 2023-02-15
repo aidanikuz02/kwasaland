@@ -218,18 +218,18 @@ async function setupPageNavListeners(type) {
   });
 }
 
-// function setupNavListeners() {
-//   const leftCircleButton = document.querySelector("#left-circle-button-entity");
-//   const rightCircleButton = document.querySelector("#right-circle-button-entity");
+function setupNavListeners() {
+  const leftCircleButton = document.querySelector("#left-circle-button-entity");
+  const rightCircleButton = document.querySelector("#right-circle-button-entity");
 
-//   leftCircleButton.addEventListener("click", function () {
-//     setOpenPanel("left");
-//   });
+  leftCircleButton.addEventListener("click", function () {
+    setOpenPanel("left");
+  });
 
-//   rightCircleButton.addEventListener("click", function () {
-//     setOpenPanel("right");
-//   });
-// }
+  rightCircleButton.addEventListener("click", function () {
+    setOpenPanel("right");
+  });
+}
 
 function overlayListeners() {
   const arButton = document.querySelector("#ar-button");
@@ -299,13 +299,13 @@ function overlayListeners() {
 }
 
 async function init() {
-  setupFindUsListeners();
-  setupDownloadListener();
-  setupVideoPlayerListeners();
+  // setupFindUsListeners();
+  // setupDownloadListener();
+  // setupVideoPlayerListeners();
   // setupNavListeners();
-  setupPageNavListeners("left");
-  setupPageNavListeners("right");
-  setupGalleryNavListeners();
+  // setupPageNavListeners("left");
+  // setupPageNavListeners("right");
+  // setupGalleryNavListeners();
   setupSceneListener();
   overlayListeners();
 
