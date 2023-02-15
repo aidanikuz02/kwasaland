@@ -2,13 +2,13 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="./public/css/styles.css" />
-    <!-- <script src="./public/js/mindar-image.prod.js"></script> -->
+    <script src="./public/js/mindar-image.prod.js"></script>
     <script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
-    <!-- <script src="./public/js/mindar-image-aframe.prod.js"></script> -->
-    <!-- <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script> -->
+    <script src="./public/js/mindar-image-aframe.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
     <script src="./public/js/aframe-components.js"></script>
     <script src="./public/js/utils.js"></script>
-    <script src="./public/js/mainori.js"></script>
+    <script src="./public/js/main.js"></script>
 
     <!-- We've included a slightly modified version of A-Frame, which fixes some polish concerns -->
     <script src="//cdn.8thwall.com/web/aframe/8frame-1.3.0.min.js"></script>
@@ -139,7 +139,8 @@
             position="0 0 -1"
             geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
             material="color: #00b050; shader: flat"
-            raycaster="objects: .clickable; far:1000; near:0 showLine: true; lineColor: red; lineOpacity: 1";
+            raycaster="objects: .clickable; far:1000; near:0 showLine: true; lineColor: red; lineOpacity: 1"
+            ;
           >
           </a-entity>
         </a-camera>
@@ -699,7 +700,7 @@
       <div id="video-container">
         <video id="video-player" crossorigin="anonymous" loop muted controls="true"></video>
       </div>
-      <div id="dom-overlay" style="z-index: 999">
+      <div id="dom-overlay">
         <div id="logger" style="display: none"></div>
         <div id="loading-screen">
           <div class="lds-ring" style="position: absolute; bottom: 30%">
