@@ -54,7 +54,7 @@
   height: 100%;
 }
 #loading-screen {
-  background: url("../images/loading-screen.webp");
+  background: url("../images/KDAR-_AppLoadingScreen.webp");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -114,6 +114,44 @@
   }
 }
 
+@media only screen and (max-height: 851px) {
+  #close-instructions {
+    bottom: 60px;
+  }
+}
+
+@media only screen and (max-height: 780px) {
+  #close-instructions {
+    bottom: 25px;
+  }
+
+  .page-dots {
+    bottom: 88px;
+  }
+}
+
+@media only screen and (max-height: 915px) {
+  #close-instructions {
+    bottom: 92px;
+  }
+
+  .page-dots {
+    bottom: 150px;
+  }
+
+  #position-gif {
+    bottom: 210px;
+  }
+
+  .right-buttons {
+    bottom: 245px;
+  }
+
+  .left-buttons {
+    bottom: 245px;
+  }
+}
+
 @media only screen and (max-height: 568px) {
   #close-instructions {
     bottom: -14px;
@@ -142,6 +180,19 @@
 
   #position-gif {
     left: 30px;
+    bottom: 100px
+  }
+
+  .right-buttons {
+    bottom: 225px;
+  }
+
+  .left-buttons {
+    bottom: 225px;
+  }
+
+  .page-dots {
+    bottom: 135px;
   }
 }
 
