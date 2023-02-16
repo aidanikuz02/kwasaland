@@ -1,4 +1,8 @@
 
+const ring = document.getElementById('cursor-ring')
+let created = false
+let newElement
+
 AFRAME.registerComponent('splashscreen', {
   schema: {
     disableWorldTracking: {type: 'bool', default: false},
@@ -53,6 +57,8 @@ AFRAME.registerComponent('splashscreen', {
 
       this.el.sceneEl.addEventListener('realityready', () => {
         console.log('reality ready')
+
+        ring.setAttribute('visible', 'true')
       })
     }
 
@@ -60,7 +66,7 @@ AFRAME.registerComponent('splashscreen', {
   },
 })
 
-AFRAME.registerComponent("arcursor", {
+AFRAME.registerComponent("tap-place", {
   init() {
     console.log('tap place')
     this.raycaster = new THREE.Raycaster()
@@ -68,8 +74,52 @@ AFRAME.registerComponent("arcursor", {
     this.threeCamera = this.camera.getObject3D('camera')
     this.ground = document.getElementById('ground')
     const ring = document.getElementById('cursor-ring')
+
+    // 2D coordinates of the raycast origin, in normalized device coordinates (NDC)---X and Y
+    // components should be between -1 and 1.  Here we want the cursor in the center of the screen.
+    this.rayOrigin = new THREE.Vector2(0, 0)
+    this.cursorLocation = new THREE.Vector3(0, 0, 0)
+
+    this.el.sceneEl.addEventListener('realityready', () => { 
+      newElement = document.getElementById('circle-panel')
+
+      this.ground.addEventListener('mousedown', createElement)
+
+      const createElement = () => {
+        if (!created) {
+          // Spawn model at location of the cursor
+          newElement.setAttribute('position', this.el.object3D.position)
+          newElement.setAttribute('rotation', '0 0 0')
+          newElement.setAttribute('shadow', {receive: false})
+          newElement.setAttribute('visible', 'true')
+  
+          newElement.setAttribute('animation-mixer', {
+            clip: animationList[0],
+            loop: 'repeat',
+            duration: 'auto',
+          })
+  
+          ring.setAttribute('visible', 'false')
+  
+          created = true
+  
+          this.ground.removeEventListener('mousedown', createElement)
+        }
+      }
+    })
   },
-  tick() {},
+  tick() {
+    // Raycast from camera to 'ground'
+    this.raycaster.setFromCamera(this.rayOrigin, this.threeCamera)
+    const intersects = this.raycaster.intersectObject(this.ground.object3D, true)
+    if (intersects.length > 0) {
+      const [intersect] = intersects
+      this.cursorLocation = intersect.point
+    }
+    this.el.object3D.position.y = 0.1
+    this.el.object3D.position.lerp(this.cursorLocation, 0.4)
+    this.el.object3D.rotation.y = this.threeCamera.rotation.y
+  },
 });
 
 function setupSceneListener() {
