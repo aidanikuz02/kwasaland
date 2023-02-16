@@ -447,7 +447,7 @@ function overlayListeners() {
   reloadHitTest.addEventListener("click", function () {
     console.log('reset ar content')
     instructions.setAttribute("style", "display: none");
-    ring.setAttribute('visible','false')
+    ring.setAttribute('visible','true')
     newElement.setAttribute('visible', 'false')
     newElement.setAttribute('scale', '0.001 0.001 0.001')
     created = false
