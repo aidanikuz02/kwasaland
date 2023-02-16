@@ -54,7 +54,7 @@
   height: 100%;
 }
 #loading-screen {
-  background: url("../images/KDAR-_AppLoadingScreen.webp");
+  background: url("../images/loading-screen.webp");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
