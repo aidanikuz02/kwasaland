@@ -1,6 +1,4 @@
 
-const videoContainer = document.querySelector("#video-container");
-
 function setupSceneListener() {
   const sceneEl = document.querySelector("a-scene");
 
@@ -306,7 +304,8 @@ function overlayListeners() {
   arButton.addEventListener("click", function () {
     console.log('enter ar')
     const sceneEl = document.querySelector("a-scene");
-    videoContainer.setAttribute("style", "display: none");
+    const videoContainer = document.querySelector("#video-container");
+    // videoContainer.setAttribute("style", "display: none");
     loadingScreen.setAttribute("style", "display: none");
     domNav.setAttribute("style", "display: block");
     // sceneEl.enterVR(true);
