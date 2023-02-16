@@ -16,128 +16,6 @@
   </head>
   <body style="display: flex; justify-content: center">
     <div style="position: absolute; max-width: 420px; width: 100%">
-      <a
-        id="contact-link"
-        href="http://kwasadamansara.com.my/contact-us"
-        target="_blank"
-        rel="noreferrer noopener"
-        style="opacity: 0; z-index: -2; position: absolute; bottom: 0"
-      ></a>
-      <a
-        id="download-link"
-        href="./public/kwasa/Kwasa_Damansara_Map.pdf"
-        target="_blank"
-        rel="noreferrer noopener"
-        style="opacity: 0; z-index: -2; position: absolute; bottom: 0"
-      ></a>
-      <a
-        id="lphs-link"
-        href="https://lphs.gov.my/"
-        target="_blank"
-        rel="noreferrer noopener"
-        style="opacity: 0; z-index: -2; position: absolute; bottom: 0"
-      ></a>
-
-      <div id="dom-overlay">
-        <div id="video-container" style="display: none">
-          <div style="position: relative; width: 100%">
-            <video
-              id="video-player"
-              crossorigin="anonymous"
-              controls="true"
-              controlslist="nodownload nofullscreen noremoteplayback"
-              src="./public/kwasa/1/video.mp4"
-            ></video>
-            <img
-              id="video-close-button"
-              src="./public/images/panel/close-button.webp"
-              width="24px"
-              height="24px"
-              style="position: absolute; top: 10px; right: 10px; cursor: pointer"
-            />
-          </div>
-        </div>
-        <div id="logger" style="display: none"></div>
-        <div id="loading-screen">
-          <div class="lds-ring" style="position: absolute; bottom: 30%">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-          <button id="ar-button" style="display: none">Masuk AR</button>
-        </div>
-        <div id="dom-nav" style="display: none">
-          <img
-            id="reload-button"
-            src="./public/images/panel/reload-button.webp"
-            width="32px"
-            height="32px"
-            style="margin-right: 10px; cursor: pointer"
-          />
-          <img
-            id="open-instructions"
-            src="./public/images/panel/instruction-button.webp"
-            width="32px"
-            height="32px"
-            style="cursor: pointer"
-          />
-        </div>
-        <div id="instructions-container" style="display: none">
-          <div id="instructions">
-            <img id="position-gif" src="./public/images/positioning.gif" />
-            <img id="drag-gif" src="./public/images/drag_and_click.gif" />
-            <img id="close-instructions" src="./public/images/panel/close-button.webp" />
-            <img
-              id="right-button-instruction-active"
-              class="right-buttons"
-              src="./public/images/panel/right-button.webp"
-              width="30px"
-              height="30px"
-              style="position: absolute; right: 8px; cursor: pointer; display: block"
-            />
-            <img
-              id="right-button-instruction-inactive"
-              class="right-buttons"
-              src="./public/images/panel/right-button-disabled.webp"
-              width="30px"
-              height="30px"
-              style="position: absolute; right: 8px; cursor: pointer; display: none"
-            />
-            <img
-              id="left-button-instruction-active"
-              class="left-buttons"
-              src="./public/images/panel/left-button.webp"
-              width="30px"
-              height="30px"
-              style="position: absolute; left: 8px; cursor: pointer; display: none"
-            />
-            <img
-              id="left-button-instruction-inactive"
-              class="left-buttons"
-              src="./public/images/panel/left-button-disabled.webp"
-              width="30px"
-              height="30px"
-              style="position: absolute; left: 8px; cursor: pointer; display: block"
-            />
-            <img
-              id="instruction-dot1"
-              src="./public/images/panel/KDAR-_Instruction01.png"
-              width="28px"
-              height="12px"
-              class="page-dots"
-            />
-            <img
-              id="instruction-dot2"
-              src="./public/images/panel/KDAR-_Instruction02.png"
-              width="28px"
-              height="12px"
-              class="page-dots"
-            />
-          </div>
-        </div>
-        <div id="dom-overlay-message" style="display: none">Enter AR to start.</div>
-      </div>
       <a-scene
         loading-screen="enabled:false"
         color-space="sRGB"
@@ -841,6 +719,128 @@
           </a-entity>
         </a-entity>
       </a-scene>
+      <a
+        id="contact-link"
+        href="http://kwasadamansara.com.my/contact-us"
+        target="_blank"
+        rel="noreferrer noopener"
+        style="opacity: 0; z-index: -2; position: absolute; bottom: 0"
+      ></a>
+      <a
+        id="download-link"
+        href="./public/kwasa/Kwasa_Damansara_Map.pdf"
+        target="_blank"
+        rel="noreferrer noopener"
+        style="opacity: 0; z-index: -2; position: absolute; bottom: 0"
+      ></a>
+      <a
+        id="lphs-link"
+        href="https://lphs.gov.my/"
+        target="_blank"
+        rel="noreferrer noopener"
+        style="opacity: 0; z-index: -2; position: absolute; bottom: 0"
+      ></a>
+
+      <div id="dom-overlay">
+        <div id="video-container" style="display: none">
+          <div style="position: relative; width: 100%">
+            <video
+              id="video-player"
+              crossorigin="anonymous"
+              controls="true"
+              controlslist="nodownload nofullscreen noremoteplayback"
+              src="./public/kwasa/1/video.mp4"
+            ></video>
+            <img
+              id="video-close-button"
+              src="./public/images/panel/close-button.webp"
+              width="24px"
+              height="24px"
+              style="position: absolute; top: 10px; right: 10px; cursor: pointer"
+            />
+          </div>
+        </div>
+        <div id="logger" style="display: none"></div>
+        <div id="loading-screen">
+          <div class="lds-ring" style="position: absolute; bottom: 30%">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+          <button id="ar-button" style="display: none">Masuk AR</button>
+        </div>
+        <div id="dom-nav" style="display: none">
+          <img
+            id="reload-button"
+            src="./public/images/panel/reload-button.webp"
+            width="32px"
+            height="32px"
+            style="margin-right: 10px; cursor: pointer"
+          />
+          <img
+            id="open-instructions"
+            src="./public/images/panel/instruction-button.webp"
+            width="32px"
+            height="32px"
+            style="cursor: pointer"
+          />
+        </div>
+        <div id="instructions-container" style="display: none">
+          <div id="instructions">
+            <img id="position-gif" src="./public/images/positioning.gif" />
+            <img id="drag-gif" src="./public/images/drag_and_click.gif" />
+            <img id="close-instructions" src="./public/images/panel/close-button.webp" />
+            <img
+              id="right-button-instruction-active"
+              class="right-buttons"
+              src="./public/images/panel/right-button.webp"
+              width="30px"
+              height="30px"
+              style="position: absolute; right: 8px; cursor: pointer; display: block"
+            />
+            <img
+              id="right-button-instruction-inactive"
+              class="right-buttons"
+              src="./public/images/panel/right-button-disabled.webp"
+              width="30px"
+              height="30px"
+              style="position: absolute; right: 8px; cursor: pointer; display: none"
+            />
+            <img
+              id="left-button-instruction-active"
+              class="left-buttons"
+              src="./public/images/panel/left-button.webp"
+              width="30px"
+              height="30px"
+              style="position: absolute; left: 8px; cursor: pointer; display: none"
+            />
+            <img
+              id="left-button-instruction-inactive"
+              class="left-buttons"
+              src="./public/images/panel/left-button-disabled.webp"
+              width="30px"
+              height="30px"
+              style="position: absolute; left: 8px; cursor: pointer; display: block"
+            />
+            <img
+              id="instruction-dot1"
+              src="./public/images/panel/KDAR-_Instruction01.png"
+              width="28px"
+              height="12px"
+              class="page-dots"
+            />
+            <img
+              id="instruction-dot2"
+              src="./public/images/panel/KDAR-_Instruction02.png"
+              width="28px"
+              height="12px"
+              class="page-dots"
+            />
+          </div>
+        </div>
+        <div id="dom-overlay-message" style="display: none">Enter AR to start.</div>
+      </div>
     </div>
   </body>
 </html>
