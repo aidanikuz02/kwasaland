@@ -10,14 +10,19 @@
     <script src="./public/js/aframe-components.js"></script>
     <script src="./public/js/utils.js"></script>
     <script src="./public/js/main.js"></script>
+    <script src="./public/js/splash-image.js"></script>
   </head>
   <body style="display: flex; justify-content: center">
     <div style="position: relative; max-width: 420px; width: 100%">
       <a-scene
-        color-space="sRGB"
-        renderer="colorManagement: true, physicallyCorrectLights"
+        xrweb="allowedDevices: mobile"
         vr-mode-ui="enabled: false"
-      >
+        xrextras-almost-there
+        xrextras-loading
+        xrextras-runtime-error
+        xrextras-gesture-detector
+        color-space="sRGB"
+        renderer="colorManagement: true, physicallyCorrectLights">
         <a-assets>
           <!-- Default -->
           <img id="reticle-img" src="./public/images/panel/reticle.webp" crossorigin="anonymous" />
