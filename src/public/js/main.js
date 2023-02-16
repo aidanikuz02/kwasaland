@@ -207,7 +207,7 @@ function setupLinkListeners() {
   const lphsLink = document.querySelector("#lphs-link");
   const lphsEls = document.querySelectorAll(".lphs-button");
   for (let el of lphsEls) {
-    el.addEventListener("mousedowm", function () {
+    el.addEventListener("mousedown", function () {
       console.log('lphs button click')
       // lphsLink.click();
     });
@@ -215,7 +215,7 @@ function setupLinkListeners() {
   const contactLink = document.querySelector("#contact-link");
   const contactEls = document.querySelectorAll(".contact-button");
   for (let el of contactEls) {
-    el.addEventListener("mousedowm", function () {
+    el.addEventListener("mousedown", function () {
       console.log('contact button click')
       // contactLink.click();
     });
@@ -224,7 +224,7 @@ function setupLinkListeners() {
   const downloadpdf = document.querySelector("#pdf-download");
   const downloadEls = document.querySelectorAll(".download-pdf");
   // for (let el of downloadpdf) {
-    downloadpdf.addEventListener("mousedowm", function () {
+    downloadpdf.addEventListener("mousedown", function () {
       console.log('download button click')
       window.open('https://kwasaland.vercel.app/public/kwasa/Kwasa_Damansara_Map.pdf', '_blank')
       // downloadLink.click();
