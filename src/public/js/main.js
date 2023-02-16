@@ -60,6 +60,8 @@ AFRAME.registerComponent('splashscreen', {
   },
 })
 
+
+
 function setupSceneListener() {
   const sceneEl = document.querySelector("a-scene");
 
@@ -370,11 +372,11 @@ function overlayListeners() {
   // });
   closeInstructions.addEventListener("click", function () {
     instructions.setAttribute("style", "display: none");
-    setARCursor(true);
+    // setARCursor(true);
   });
   openInstructions.addEventListener("click", function () {
     instructions.setAttribute("style", "display: flex");
-    setARCursor(false);
+    // setARCursor(false);
   });
   reloadHitTest.addEventListener("click", function () {
     instructions.setAttribute("style", "display: none");
