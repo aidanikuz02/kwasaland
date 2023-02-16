@@ -298,7 +298,7 @@ function overlayListeners() {
   arButton.addEventListener("click", function () {
     console.log('enter ar')
     const sceneEl = document.querySelector("a-scene");
-    sceneEl.setAttribute('xrweb', `disableWorldTracking: ${this.data.disableWorldTracking}`)
+    sceneEl.setAttribute('xrweb', `disableWorldTracking: false`)
     // sceneEl.enterVR(true);
   });
   closeInstructions.addEventListener("click", function () {
