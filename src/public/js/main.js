@@ -1,4 +1,65 @@
 
+AFRAME.registerComponent('splashscreen', {
+  schema: {
+    disableWorldTracking: {type: 'bool', default: false},
+    requestGyro: {type: 'bool', default: false},
+  },
+  init() {
+    console.log('check camera status')
+    const videoContainer = document.querySelector("#video-container");
+    const loadingScreen = document.querySelector("#loading-screen");
+    const domNav = document.querySelector("#dom-nav");
+    const arButton = document.querySelector("#ar-button");
+
+    console.log('loading screen')
+    
+    const cameraStatusChange = ({status}) => {
+      switch (status) {
+        case 'hasVideo':
+          console.log(`has video`)
+          break
+        case 'requesting':
+          console.log(`requesting video`)
+          break
+        case 'failed':
+          console.log(`video request failed`)
+        default:
+          break
+      }
+    }
+    
+    XR8.addCameraPipelineModule({
+      name: 'mycamerapipelinemodule',
+      onCameraStatusChange: cameraStatusChange,
+    })
+  
+    const addXRWeb = () => {
+      console.log('enter ar')
+      
+      if (this.data.requestGyro === true && this.data.disableWorldTracking === true) {
+        // If world tracking is disabled, and you still want gyro enabled (i.e. 3DoF mode)
+        // Request motion and orientation sensor via XR8's permission API
+        XR8.addCameraPipelineModule({
+          name: 'request-gyro',
+          requiredPermissions: () => ([XR8.XrPermissions.permissions().DEVICE_ORIENTATION]),
+        })
+      }
+
+      this.el.sceneEl.setAttribute('xrweb', `disableWorldTracking: ${this.data.disableWorldTracking}`)
+      
+      videoContainer.setAttribute("style", "display: none");
+      loadingScreen.setAttribute("style", "display: none");
+      domNav.setAttribute("style", "display: flex");
+
+      this.el.sceneEl.addEventListener('realityready', () => {
+        console.log('reality ready')
+      })
+    }
+
+    arButton.onclick = addXRWeb
+  },
+})
+
 function setupSceneListener() {
   const sceneEl = document.querySelector("a-scene");
 
@@ -260,67 +321,6 @@ function setupNavListeners() {
     setOpenPanel("right");
   });
 }
-
-AFRAME.registerComponent('splashscreen', {
-  schema: {
-    disableWorldTracking: {type: 'bool', default: false},
-    requestGyro: {type: 'bool', default: false},
-  },
-  init() {
-    console.log('check camera status')
-    const videoContainer = document.querySelector("#video-container");
-    const loadingScreen = document.querySelector("#loading-screen");
-    const domNav = document.querySelector("#dom-nav");
-    const arButton = document.querySelector("#ar-button");
-
-    console.log('loading screen')
-    
-    const cameraStatusChange = ({status}) => {
-      switch (status) {
-        case 'hasVideo':
-          console.log(`has video`)
-          break
-        case 'requesting':
-          console.log(`requesting video`)
-          break
-        case 'failed':
-          console.log(`video request failed`)
-        default:
-          break
-      }
-    }
-    
-    XR8.addCameraPipelineModule({
-      name: 'mycamerapipelinemodule',
-      onCameraStatusChange: cameraStatusChange,
-    })
-  
-    const addXRWeb = () => {
-      console.log('enter ar')
-      
-      if (this.data.requestGyro === true && this.data.disableWorldTracking === true) {
-        // If world tracking is disabled, and you still want gyro enabled (i.e. 3DoF mode)
-        // Request motion and orientation sensor via XR8's permission API
-        XR8.addCameraPipelineModule({
-          name: 'request-gyro',
-          requiredPermissions: () => ([XR8.XrPermissions.permissions().DEVICE_ORIENTATION]),
-        })
-      }
-
-      this.el.sceneEl.setAttribute('xrweb', `disableWorldTracking: ${this.data.disableWorldTracking}`)
-      
-      videoContainer.setAttribute("style", "display: none");
-      loadingScreen.setAttribute("style", "display: none");
-      domNav.setAttribute("style", "display: flex");
-
-      this.el.sceneEl.addEventListener('realityready', () => {
-        console.log('reality ready')
-      })
-    }
-
-    arButton.onclick = addXRWeb
-  },
-})
 
 function overlayListeners() {
   const arButton = document.querySelector("#ar-button");
