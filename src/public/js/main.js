@@ -221,11 +221,13 @@ function setupLinkListeners() {
     });
   }
   const downloadLink = document.querySelector("#download-link");
+  const downloadpdf = document.querySelector("#pdf-download");
   const downloadEls = document.querySelectorAll(".download-pdf");
-  for (let el of downloadEls) {
+  for (let el of downloadpdf) {
     el.addEventListener("mousedowm", function () {
       console.log('download button click')
-      downloadLink.click();
+      window.open('https://kwasaland.vercel.app/public/kwasa/Kwasa_Damansara_Map.pdf', '_blank')
+      // downloadLink.click();
     });
   }
 }
