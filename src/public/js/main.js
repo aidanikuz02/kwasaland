@@ -390,10 +390,10 @@ async function init() {
   console.log('async function init')
   setupLinkListeners();
   setupVideoPlayerListeners();
-  setupNavListeners();
-  setupPageNavListeners("left");
-  setupPageNavListeners("right");
-  setupGalleryNavListeners();
+  // setupNavListeners();
+  // setupPageNavListeners("left");
+  // setupPageNavListeners("right");
+  // setupGalleryNavListeners();
   // setupSceneListener();
   overlayListeners();
 
