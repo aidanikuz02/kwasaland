@@ -306,10 +306,10 @@ async function init() {
   setupFindUsListeners();
   setupDownloadListener();
   setupVideoPlayerListeners();
-  // setupNavListeners();
-  // setupPageNavListeners("left");
-  // setupPageNavListeners("right");
-  // setupGalleryNavListeners();
+  setupNavListeners();
+  setupPageNavListeners("left");
+  setupPageNavListeners("right");
+  setupGalleryNavListeners();
   setupSceneListener();
   overlayListeners();
 
