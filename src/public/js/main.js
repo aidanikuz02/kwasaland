@@ -10,45 +10,49 @@ function setupSceneListener() {
 
   sceneEl.addEventListener("enter-vr", function () {
     console.log('enter vr event listener')
-    if (this.is("ar-mode")) {
-      videoContainer.setAttribute("style", "display: none");
-      loadingScreen.setAttribute("style", "display: none");
-      // instructions.setAttribute("style", "display: flex");
-      domNav.setAttribute("style", "display: flex");
-      this.addEventListener(
-        "ar-hit-test-start",
-        function () {
-          setMessage(true, `Scanning environment, finding surface.`);
-        },
-        { once: true }
-      );
+    videoContainer.setAttribute("style", "display: none");
+    loadingScreen.setAttribute("style", "display: none");
+    domNav.setAttribute("style", "display: block");
+    // if (this.is("ar-mode")) {
+    //   videoContainer.setAttribute("style", "display: none");
+    //   loadingScreen.setAttribute("style", "display: none");
+    //   // instructions.setAttribute("style", "display: flex");
+    //   domNav.setAttribute("style", "display: flex");
+    //   this.addEventListener(
+    //     "ar-hit-test-start",
+    //     function () {
+    //       setMessage(true, `Scanning environment, finding surface.`);
+    //     },
+    //     { once: true }
+    //   );
 
-      this.addEventListener(
-        "ar-hit-test-achieved",
-        function () {
-          setMessage(
-            true,
-            `Select the location to place the poster<br />by tapping on the screen.`
-          );
-        },
-        { once: true }
-      );
-      this.addEventListener("ar-hit-test-select", function (e) {
-        try {
-          setMessage(false, "");
+    //   this.addEventListener(
+    //     "ar-hit-test-achieved",
+    //     function () {
+    //       setMessage(
+    //         true,
+    //         `Select the location to place the poster<br />by tapping on the screen.`
+    //       );
+    //     },
+    //     { once: true }
+    //   );
+    //   this.addEventListener("ar-hit-test-select", function (e) {
+    //     try {
+    //       setMessage(false, "");
 
-          target.object3D.position.copy(e.detail.position);
-          target.object3D.position.y += 1;
-          target.object3D.rotation.setFromQuaternion(e.detail.orientation);
+    //       target.object3D.position.copy(e.detail.position);
+    //       target.object3D.position.y += 1;
+    //       target.object3D.rotation.setFromQuaternion(e.detail.orientation);
 
-          setARCursor(true);
-          setHitTest(false);
-        } catch (error) {
-          console.log(error);
-        }
-      });
-    }
+    //       setARCursor(true);
+    //       setHitTest(false);
+    //     } catch (error) {
+    //       console.log(error);
+    //     }
+    //   });
+    // }
   });
+  
   sceneEl.addEventListener("exit-vr", function () {
     loadingScreen.setAttribute("style", "display: flex");
     instructions.setAttribute("style", "display: none");
