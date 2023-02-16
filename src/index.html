@@ -15,7 +15,7 @@
     <script src="./public/js/main.js"></script>
   </head>
   <body style="display: flex; justify-content: center">
-    <div style="position: relative; max-width: 420px; width: 100%">
+    <div style="position: absolute; max-width: 420px; width: 100%">
       <a-scene
         loading-screen="enabled:false"
         color-space="sRGB"
@@ -741,7 +741,7 @@
         style="opacity: 0; z-index: -2; position: absolute; bottom: 0"
       ></a>
 
-      <div id="dom-overlay">
+      <div id="dom-overlay" style="z-index: 998; position: absolute">
         <div id="video-container" style="display: none">
           <div style="position: relative; width: 100%">
             <video

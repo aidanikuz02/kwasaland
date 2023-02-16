@@ -318,6 +318,7 @@ function overlayListeners() {
 }
 
 async function init() {
+  console.log('async function init')
   setupLinkListeners();
   setupVideoPlayerListeners();
   setupNavListeners();
@@ -333,7 +334,10 @@ async function init() {
     spinner.setAttribute("style", "display: none");
     arButton.setAttribute(
       "style",
-      `position: absolute; bottom: 33%; display: block; background-color: transparent; color: #00b050; border: 2px solid #00b050; padding-left: 20px; padding-top: 10px; padding-right: 20px; padding-bottom: 10px; font-size: 18px;`
+      `position: absolute; bottom: 33%; display: block; background-color: transparent; color: #00b050; border: 2px solid #00b050; padding-left: 20px; padding-top: 10px; padding-right: 20px; padding-bottom: 10px; font-size: 18px;width: 30%;
+      margin: auto;
+      left: 0;
+      right: 0`
     );
   }, 3000);
 }
