@@ -405,6 +405,7 @@ function overlayListeners() {
   const closeInstructions = document.querySelector("#close-instructions");
   const openInstructions = document.querySelector("#open-instructions");
   const reloadHitTest = document.querySelector("#reload-button");
+  this.ground = document.getElementById('ground')
   // const poster = document.querySelector("#poster-target");
 
   rightButtonInstructionActive.addEventListener("click", function () {
