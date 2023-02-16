@@ -81,7 +81,7 @@ AFRAME.registerComponent("tap-place", {
     this.cursorLocation = new THREE.Vector3(0, 0, 0)
 
     this.el.sceneEl.addEventListener('realityready', () => { 
-      newElement = document.getElementById('circle-panel')
+      newElement = document.getElementById('ar-content')
 
       const createElement = () => {
         if (!created) {
@@ -90,11 +90,12 @@ AFRAME.registerComponent("tap-place", {
           newElement.setAttribute('rotation', '0 0 0')
           newElement.setAttribute('shadow', {receive: false})
           newElement.setAttribute('visible', 'true')
-  
-          newElement.setAttribute('animation-mixer', {
-            clip: animationList[0],
-            loop: 'repeat',
-            duration: 'auto',
+          newElement.setAttribute('animation', {
+            property: 'scale',
+            from: '0.001 0.001 0.001',
+            to: '3 3 3',
+            easing: 'easeOutSine',
+            dur: 3000,
           })
   
           ring.setAttribute('visible', 'false')
