@@ -60,7 +60,17 @@ AFRAME.registerComponent('splashscreen', {
   },
 })
 
-
+AFRAME.registerComponent("arcursor", {
+  init() {
+    console.log('tap place')
+    this.raycaster = new THREE.Raycaster()
+    this.camera = document.getElementById('camera')
+    this.threeCamera = this.camera.getObject3D('camera')
+    this.ground = document.getElementById('ground')
+    const ring = document.getElementById('cursor-ring')
+  },
+  tick() {},
+});
 
 function setupSceneListener() {
   const sceneEl = document.querySelector("a-scene");
