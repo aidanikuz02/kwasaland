@@ -9,6 +9,7 @@ function setupSceneListener() {
   setHitTest(true);
 
   sceneEl.addEventListener("enter-vr", function () {
+    console.log('enter vr event listener')
     if (this.is("ar-mode")) {
       videoContainer.setAttribute("style", "display: none");
       loadingScreen.setAttribute("style", "display: none");
@@ -298,8 +299,7 @@ function overlayListeners() {
   arButton.addEventListener("click", function () {
     console.log('enter ar')
     const sceneEl = document.querySelector("a-scene");
-    sceneEl.setAttribute('xrweb', `disableWorldTracking: false`)
-    // sceneEl.enterVR(true);
+    sceneEl.enterVR(true);
   });
   closeInstructions.addEventListener("click", function () {
     instructions.setAttribute("style", "display: none");
