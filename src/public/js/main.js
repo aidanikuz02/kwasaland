@@ -303,7 +303,10 @@ function overlayListeners() {
   arButton.addEventListener("click", function () {
     console.log('enter ar')
     const sceneEl = document.querySelector("a-scene");
-    sceneEl.enterVR(true);
+    videoContainer.setAttribute("style", "display: none");
+    loadingScreen.setAttribute("style", "display: none");
+    domNav.setAttribute("style", "display: block");
+    // sceneEl.enterVR(true);
   });
   closeInstructions.addEventListener("click", function () {
     instructions.setAttribute("style", "display: none");
