@@ -83,8 +83,6 @@ AFRAME.registerComponent("tap-place", {
     this.el.sceneEl.addEventListener('realityready', () => { 
       newElement = document.getElementById('circle-panel')
 
-      this.ground.addEventListener('mousedown', createElement)
-
       const createElement = () => {
         if (!created) {
           // Spawn model at location of the cursor
@@ -106,6 +104,8 @@ AFRAME.registerComponent("tap-place", {
           this.ground.removeEventListener('mousedown', createElement)
         }
       }
+
+      this.ground.addEventListener('mousedown', createElement)
     })
   },
   tick() {
