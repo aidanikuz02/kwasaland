@@ -1,853 +1,274 @@
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="./public/css/styles.css" />
+<!DOCTYPE html>
+    <head>
+        <title>Kwasaland</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Be inspired by Houdini, the resident chameleon in Idyllias. Try it!">
+        <script src="//apps.8thwall.com/xrweb?appKey=uWew5EMUVhJPJO9PtFaDhwFvNtFKd607ll9FD5TZwYQbJnXndm7lENQISO2Y5j0fCGuPjK"></script>
+        <!-- <script src="./public/js/landing-page.js"></script> -->
+        <script src="./public/js/8frame-1.3.0.min.js"></script>
+        <script src="./public/js/xrextras.js"></script>
+        <script src="./public/js/aframe-extras-6.1.1.min.js"></script>
 
-    <script src="//apps.8thwall.com/xrweb?appKey=uWew5EMUVhJPJO9PtFaDhwFvNtFKd607ll9FD5TZwYQbJnXndm7lENQISO2Y5j0fCGuPjK"></script>
-    <!-- <script src="./public/js/landing-page.js"></script> -->
-    <script src="./public/js/8frame-1.3.0.min.js"></script>
-    <script src="./public/js/xrextras.js"></script>
-    <script src="./public/js/aframe-extras-6.1.1.min.js"></script>
-
-    <!-- <script src="./public/js/aframe.min.js"></script> -->
-    <script src="./public/js/aframe-components.js"></script>
-    <script src="./public/js/utils.js"></script>
-    <script src="./public/js/main.js"></script>
-  </head>
-  <body style="display: flex; justify-content: center">
-    <div style="position: absolute; max-width: 420px; width: 100%">
-      <a-scene
-        splashscreen
-        color-space="sRGB"
-        renderer="colorManagement: true, physicallyCorrectLights"
-        vr-mode-ui="enabled: false"
-        xrextras-almost-there
-        xrextras-loading
-        xrextras-runtime-error
-        xrextras-gesture-detector
-        xrweb="allowedDevices: mobile">
+        <link rel="stylesheet" href="./public/css/styles.css" />    
         
-        <a-camera
-          id="camera"
-          position="0 8 0"
-          raycaster="objects: .clickable"
-          cursor="fuse: false; rayOrigin: mouse;"
-          fov="15">
-        </a-camera>
-        <a-assets>
-          <!-- Default -->
-          <img id="reticle-img" src="./public/images/panel/reticle.webp" crossorigin="anonymous" />
-          <img id="logo-black" src="./public/images/logo.webp" />
-          <img id="logo-white" src="./public/images/logo-white.webp" />
-          <img id="footer" src="./public/images/footer.webp" />
-          <!-- Circle Panel -->
-          <img id="circle-panel-base" src="./public/images/new/main-controller.webp" />
-          <img id="circle-panel-front" src="./public/images/new/main-panel-front.webp" />
-          <img id="circle-panel-back" src="./public/images/new/main-panel-back.webp" />
-          <!-- Standard Panel -->
-          <img id="divider" src="./public/images/panel/divider.webp" />
-          <img id="panel" src="./public/images/panel/panel.webp" />
-          <img id="last-button" src="./public/images/panel/last-button.webp" />
-          <img id="right-button" src="./public/images/panel/right-button.webp" />
-          <img id="right-button-disabled" src="./public/images/panel/right-button-disabled.webp" />
-          <img id="left-button" src="./public/images/panel/left-button.webp" />
-          <img id="left-button-disabled" src="./public/images/panel/left-button-disabled.webp" />
-          <img id="contact-button" src="./public/images/panel/contact-button.webp" />
-          <img id="close-button" src="./public/images/panel/close-button.webp" />
-          <img id="download-button" src="./public/images/panel/download-button.webp" />
-          <img id="idaman-logo" src="./public/images/panel/idaman-logo.webp" />
-
-          <!-- Left Pages -->
-          <!-- Left Page 1 -->
-          <video
-            id="left-video-1"
-            crossorigin="anonymous"
-            autoplay
-            loop
-            muted
-            controls="false"
-            src="./public/kwasa/1/video.mp4"
-            playsinline
-            webkit-playsinline
-          ></video>
-          <img id="left-text-1" src="./public/kwasa/1/text.webp" />
-          <!-- Left Page 2-17 -->
-          <img id="left-image-2" src="./public/kwasa/2.webp" />
-          <video
-            id="left-video-3"
-            src="./public/kwasa/3.mp4"
-            crossorigin="anonymous"
-            autoplay
-            loop
-            muted
-            controls="false"
-            playsinline
-            webkit-playsinline
-          ></video>
-          <img id="left-image-4" src="./public/kwasa/4.webp" />
-          <video
-            id="left-video-5"
-            src="./public/kwasa/5.mp4"
-            crossorigin="anonymous"
-            autoplay
-            loop
-            muted
-            controls="false"
-            playsinline
-            webkit-playsinline
-          ></video>
-          <video
-            id="left-video-6"
-            src="./public/kwasa/6.mp4"
-            crossorigin="anonymous"
-            autoplay
-            loop
-            muted
-            controls="false"
-            playsinline
-            webkit-playsinline
-          ></video>
-          <video
-            id="left-video-7"
-            src="./public/kwasa/7.mp4"
-            crossorigin="anonymous"
-            autoplay
-            loop
-            muted
-            controls="false"
-            playsinline
-            webkit-playsinline
-          ></video>
-          <img id="left-image-8" src="./public/kwasa/8.webp" />
-          <img id="left-image-9" src="./public/kwasa/9.webp" />
-          <img id="left-image-10" src="./public/kwasa/10.webp" />
-          <img id="left-image-11" src="./public/kwasa/11.webp" />
-          <img id="left-image-12" src="./public/kwasa/12.webp" />
-          <img id="left-image-13" src="./public/kwasa/13.webp" />
-          <img id="left-image-14" src="./public/kwasa/14.webp" />
-          <img id="left-image-15" src="./public/kwasa/15.webp" />
-          <img id="left-image-16" src="./public/kwasa/16.webp" />
-          <img id="left-image-17" src="./public/kwasa/17.webp" />
-
-          <!-- Right Pages -->
-          <!-- Right Page 1 -->
-          <video
-            id="right-video-1"
-            crossorigin="anonymous"
-            autoplay
-            loop
-            muted
-            controls="false"
-            src="./public/selangorku/1/video.mp4"
-            playsinline
-            webkit-playsinline
-          ></video>
-          <img id="right-text-1" src="./public/selangorku/1/text.webp" />
-          <!-- Right Page 2 - 7 -->
-          <img id="right-image-2" src="./public/selangorku/2.webp" />
-          <img id="right-image-3" src="./public/selangorku/3.webp" />
-          <img id="right-image-4" src="./public/selangorku/4.webp" />
-          <img id="right-image-5" src="./public/selangorku/5.webp" />
-          <img id="right-image-7" src="./public/selangorku/7.webp" />
-          <!-- Right Gallery Big 1 - 9 -->
-          <img id="gallery-1" src="./public/selangorku/gallery/1.webp" />
-          <img id="gallery-2" src="./public/selangorku/gallery/2.webp" />
-          <img id="gallery-3" src="./public/selangorku/gallery/3.webp" />
-          <img id="gallery-4" src="./public/selangorku/gallery/4.webp" />
-          <img id="gallery-5" src="./public/selangorku/gallery/5.webp" />
-          <img id="gallery-6" src="./public/selangorku/gallery/6.webp" />
-          <img id="gallery-7" src="./public/selangorku/gallery/7.webp" />
-          <img id="gallery-8" src="./public/selangorku/gallery/8.webp" />
-          <img id="gallery-9" src="./public/selangorku/gallery/9.webp" />
-          <!-- Right Gallery Small 1 - 9 -->
-          <img id="gallery-1-small" src="./public/selangorku/gallery/1-small.webp" />
-          <img id="gallery-2-small" src="./public/selangorku/gallery/2-small.webp" />
-          <img id="gallery-3-small" src="./public/selangorku/gallery/3-small.webp" />
-          <img id="gallery-4-small" src="./public/selangorku/gallery/4-small.webp" />
-          <img id="gallery-5-small" src="./public/selangorku/gallery/5-small.webp" />
-          <img id="gallery-6-small" src="./public/selangorku/gallery/6-small.webp" />
-          <img id="gallery-7-small" src="./public/selangorku/gallery/7-small.webp" />
-          <img id="gallery-8-small" src="./public/selangorku/gallery/8-small.webp" />
-          <img id="gallery-9-small" src="./public/selangorku/gallery/9-small.webp" />
-        </a-assets>
-
-        <!-- <a-camera position="0 0 5" look-controls="enabled: true">
-          <a-entity
-            id="ar-cursor"
-            animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.7 0.7 0.7; to: 1 1 1; dir:alternate;loop:1;"
-            animation__mouseleave_1="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 150; to: 1 1 1"
-            animation__mouseleave_2="property: material.color; startEvents: mouseleave; easing: easeInCubic; dur: 150; to: #333333"
-            animation__mouseenter_1="property: scale; startEvents: mouseenter; easing: easeInCubic; dur: 150; to: 0.7 0.7 0.7"
-            animation__mouseenter_2="property: material.color; startEvents: mouseenter; easing: easeInCubic; dur: 150; to: #00b050"
-            cursor="fuse: false;"
-            position="0 0 -1"
-            geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
-            material="color: #333333; shader: flat"
-            raycaster="objects: .clickable; far:1000; near:0; showLine: true; lineColor: red; lineOpacity: 1;enabled: false"
-            visible="false"
-          >
-          </a-entity>
-        </a-camera> -->
-        
-        <a-light id="ambient-light" intensity="1" light="type:ambient"></a-light>
-        <!-- <a-light
-          id="dirlight-2"
-          intensity="1.4"
-          light="castShadow:true;type:directional"
-          position="0 0 -10"
-        ></a-light> -->
-        <a-box
-          id="reticle"
-          width="0.3"
-          height="0.1"
-          depth="0.2"
-          material="opacity:0"
-          hide-on-enter-ar
-        ></a-box>
-        <a-entity id="poster-target" hide-on-enter-ar>
-          <a-entity position="0 0 0" rotation="0 0 0" scale="0.2 0.2 0.2">
-            <a-entity id="left-circle-panel" position="-2.2 0 0">
-              <a-circle radius="0.6" src="#circle-panel-base" side="double"></a-circle>
-              <a-circle
-                id="left-circle-button-entity"
-                radius="0.43"
-                class="clickable"
-                position="0 0 0.01"
-              >
-                <a-entity
-                  text="value: Perbandaran KWASA Damansara;align: center;color: #3f3f3f;width:0.7;wrapCount:10"
-                  position="0 0 0">
-                </a-entity>
-              </a-circle>
-              <a-circle
-                radius="0.6"
-                src="#circle-panel-base"
-                side="double"
-                position="0 0 -0.16"
-              ></a-circle>
-            </a-entity>
-            <a-box
-              id="left-panel"
-              width="5"
-              height="3"
-              depth="0.1"
-              src="#panel"
-              side="double"
-              position="-2.2 0 -0.1"
-              open="false"
-              scale="0.1 0.1 0"
-            >
-              <a-entity id="left-panel-nav" position="-2.1 1.2 0.12">
-                <a-image
-                  id="left-panel-last-button"
-                  width="0.2"
-                  height="0.2"
-                  src="#last-button"
-                  transparent="true"
-                  position="0 0 0"
-                  class="clickable"
-                ></a-image>
-                <a-image
-                  width="0.02"
-                  height="0.3"
-                  src="#divider"
-                  transparent="true"
-                  position="0.2 0 0"
-                ></a-image>
-                <a-image
-                  id="left-panel-next-button"
-                  width="0.2"
-                  height="0.2"
-                  src="#left-button"
-                  transparent="true"
-                  position="0.4 0 0"
-                  class="clickable"
-                ></a-image>
-                <a-image
-                  id="left-panel-prev-button"
-                  width="0.2"
-                  height="0.2"
-                  src="#right-button-disabled"
-                  transparent="true"
-                  position="0.7 0 0"
-                  class="clickable"
-                ></a-image>
-                <a-image
-                  id="left-panel-close-button"
-                  width="0.2"
-                  height="0.2"
-                  src="#close-button"
-                  transparent="true"
-                  position="4.3 0 0"
-                  class="clickable"
-                ></a-image>
-              </a-entity>
-              <a-entity id="left-panel-content" position="0 0 0.11" page="1">
-                <!-- Page 1 -->
-                <a-entity id="left-page-1" visible="true">
-                  <a-image
-                    width="0.8"
-                    height="0.9"
-                    position="-1.9 0 0"
-                    src="#left-text-1"
-                    transparent="true"
-                  ></a-image>
-                  <a-video
-                    width="3.2"
-                    height="1.8"
-                    src="#left-video-1"
-                    position="0.2 0.05 0.01"
-                    class="video-element left-click"
-                  ></a-video>
-                </a-entity>
-                <!-- Page 2 -->
-                <a-entity id="left-page-2" visible="false">
-                  <a-image
-                    width="4"
-                    height="1.8"
-                    src="#left-image-2"
-                    position="-0.2 0.05 0.01"
-                  ></a-image>
-                </a-entity>
-                <!-- Page 3 -->
-                <a-entity id="left-page-3" visible="false">
-                  <a-video
-                    width="4"
-                    height="1.8"
-                    src="#left-video-3"
-                    position="-0.2 0.05 0.01"
-                    class="video-element"
-                  ></a-video>
-                </a-entity>
-                <!-- Page 4 -->
-                <a-entity id="left-page-4" visible="false">
-                  <a-image
-                    width="4"
-                    height="1.8"
-                    src="#left-image-4"
-                    position="-0.2 0.05 0.01"
-                  ></a-image>
-                  <a-image
-                    width="0.7"
-                    height="0.25"
-                    src="#download-button"
-                    position="-1.7 -0.6 0.02"
-                    class="clickable download-pdf"
-                  ></a-image>
-                </a-entity>
-                <!-- Page 5 -->
-                <a-entity id="left-page-5" visible="false">
-                  <a-video
-                    width="4"
-                    height="1.8"
-                    src="#left-video-5"
-                    position="-0.2 0.05 0.01"
-                    class="video-element"
-                  ></a-video>
-                </a-entity>
-                <!-- Page 6 -->
-                <a-entity id="left-page-6" visible="false">
-                  <a-video
-                    width="4"
-                    height="1.8"
-                    src="#left-video-6"
-                    position="-0.2 0.05 0.01"
-                    class="video-element"
-                  ></a-video>
-                </a-entity>
-                <!-- Page 7 -->
-                <a-entity id="left-page-7" visible="false">
-                  <a-video
-                    width="4"
-                    height="1.8"
-                    src="#left-video-7"
-                    position="-0.2 0.05 0.01"
-                    class="video-element"
-                  ></a-video>
-                </a-entity>
-                <!-- Page 8 -->
-                <a-entity id="left-page-8" visible="false">
-                  <a-image
-                    width="4"
-                    height="1.8"
-                    src="#left-image-8"
-                    position="-0.2 0.05 0.01"
-                  ></a-image>
-                </a-entity>
-                <!-- Page 9 -->
-                <a-entity id="left-page-9" visible="false">
-                  <a-image
-                    width="4"
-                    height="1.8"
-                    src="#left-image-9"
-                    position="-0.2 0.05 0.01"
-                  ></a-image>
-                </a-entity>
-                <!-- Page 10 -->
-                <a-entity id="left-page-10" visible="false">
-                  <a-image
-                    width="4"
-                    height="1.8"
-                    src="#left-image-10"
-                    position="-0.2 0.05 0.01"
-                  ></a-image>
-                </a-entity>
-                <!-- Page 11 -->
-                <a-entity id="left-page-11" visible="false">
-                  <a-image
-                    width="4"
-                    height="1.8"
-                    src="#left-image-11"
-                    position="-0.2 0.05 0.01"
-                  ></a-image>
-                </a-entity>
-                <!-- Page 12 -->
-                <a-entity id="left-page-12" visible="false">
-                  <a-image
-                    width="4"
-                    height="1.8"
-                    src="#left-image-12"
-                    position="-0.2 0.05 0.01"
-                  ></a-image>
-                </a-entity>
-                <!-- Page 13 -->
-                <a-entity id="left-page-13" visible="false">
-                  <a-image
-                    width="4"
-                    height="1.8"
-                    src="#left-image-13"
-                    position="-0.2 0.05 0.01"
-                  ></a-image>
-                </a-entity>
-                <!-- Page 14 -->
-                <a-entity id="left-page-14" visible="false">
-                  <a-image
-                    width="4"
-                    height="1.8"
-                    src="#left-image-14"
-                    position="-0.2 0.05 0.01"
-                  ></a-image>
-                </a-entity>
-                <!-- Page 15 -->
-                <a-entity id="left-page-15" visible="false">
-                  <a-image
-                    width="4"
-                    height="1.8"
-                    src="#left-image-15"
-                    position="-0.2 0.05 0.01"
-                  ></a-image>
-                </a-entity>
-                <!-- Page 16 -->
-                <a-entity id="left-page-16" visible="false">
-                  <a-image
-                    width="4"
-                    height="1.8"
-                    src="#left-image-16"
-                    position="-0.2 0.05 0.01"
-                  ></a-image>
-                </a-entity>
-                <!-- Page 17 -->
-                <a-entity id="left-page-17" visible="false">
-                  <a-image
-                    width="4"
-                    height="1.8"
-                    src="#left-image-17"
-                    position="-0.2 0.05 0.01"
-                  ></a-image>
-                </a-entity>
-              </a-entity>
-              <a-entity id="left-panel-footer" position="-1.8 -1.17 0.12">
-                <a-plane
-                  src="#logo-black"
-                  width="0.6"
-                  height="0.25"
-                  position="0 0 0"
-                  transparent="true"
-                >
-                </a-plane>
-                <a-plane
-                  width="1"
-                  height="0.3"
-                  src="#contact-button"
-                  transparent="true"
-                  position="3.6 0 0"
-                  class="contact-button left-click"
-                ></a-plane>
-              </a-entity>
-            </a-box>
-            <a-entity id="right-circle-panel" position="2.2 0 0">
-              <a-circle radius="0.6" src="#circle-panel-base" side="double"></a-circle>
-              <a-circle
-                id="right-circle-button-entity"
-                radius="0.43"
-                class="clickable"
-                position="0 0 0.01"
-              >
-                <a-entity
-                  text="value: Rumah Selangorku Idaman;align: center;color: #3f3f3f;width:0.7;wrapCount:10"
-                  position="0 0 0"
+        <script src="./public/js/utils.js"></script>
+        <script src="./public/js/main.js"></script>
+    </head>
+    <body>
+        <div id="dom-overlay">
+            <div id="video-container" style="display: none">
+                <div style="position: relative; width: 100%">
+                    <video
+                        id="video-player"
+                        crossorigin="anonymous"
+                        controls="true"
+                        controlslist="nodownload nofullscreen noremoteplayback"
+                        src="./public/kwasa/1/video.mp4">
+                    </video>
+                    <img
+                    id="video-close-button"
+                    src="./public/images/panel/close-button.webp"
+                    width="24px"
+                    height="24px"
+                    style="position: absolute; top: 10px; right: 10px; cursor: pointer"
+                    />
+                </div>
+            </div>
+            <div id="logger" style="display: none"></div>
+            <div id="loading-screen">
+                <div class="lds-ring" style="position: absolute; bottom: 30%">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <button id="ar-button" style="display: none">Masuk AR</button>
+            </div>
+            <div id="dom-nav" style="display: none">
+                <img
+                    id="reload-button"
+                    src="./public/images/panel/reload-button.webp"
+                    width="32px"
+                    height="32px"
+                    style="margin-right: 10px; cursor: pointer"
                 />
-              </a-circle>
-              <a-circle
-                radius="0.6"
-                src="#circle-panel-base"
-                side="double"
-                position="0 0 -0.16"
-              ></a-circle>
-            </a-entity>
-
-            <a-box
-              id="right-panel"
-              width="5"
-              height="3"
-              depth="0.1"
-              src="#panel"
-              side="double"
-              position="2.2 0 -0.1"
-              open="false"
-              scale="0.1 0.1 0"
-            >
-              <a-entity id="right-panel-nav" position="-2.2 1.2 0.12">
-                <a-image
-                  id="right-panel-last-button"
-                  width="0.2"
-                  height="0.2"
-                  src="#last-button"
-                  transparent="true"
-                  position="0 0 0"
-                  class="clickable"
-                ></a-image>
-                <a-image
-                  width="0.02"
-                  height="0.3"
-                  src="#divider"
-                  transparent="true"
-                  position="0.2 0 0"
-                ></a-image>
-                <a-image
-                  id="right-panel-prev-button"
-                  width="0.2"
-                  height="0.2"
-                  src="#left-button-disabled"
-                  transparent="true"
-                  position="0.4 0 0"
-                  class="clickable"
-                ></a-image>
-                <a-image
-                  id="right-panel-next-button"
-                  width="0.2"
-                  height="0.2"
-                  src="#right-button"
-                  transparent="true"
-                  position="0.7 0 0"
-                  class="clickable"
-                ></a-image>
-                <a-image
-                  id="right-panel-close-button"
-                  width="0.2"
-                  height="0.2"
-                  src="#close-button"
-                  transparent="true"
-                  position="4.3 0 0"
-                  class="clickable"
-                ></a-image>
-              </a-entity>
-              <a-entity id="right-panel-content" position="0 0 0.11" page="1">
-                <!-- Page 1 -->
-                <a-entity id="right-page-1" visible="true">
-                  <a-image
-                    width="0.8"
-                    height="0.9"
-                    position="1.9 0 0"
-                    src="#right-text-1"
-                    transparent="true"
-                  ></a-image>
-                  <a-video
-                    width="3.2"
-                    height="1.8"
-                    src="#right-video-1"
-                    position="-0.2 0.05 0.01"
-                    class="video-element right-click"
-                  ></a-video>
-                </a-entity>
-                <!-- Page 2 -->
-                <a-entity id="right-page-2" visible="false">
-                  <a-image
-                    width="4"
-                    height="2.3"
-                    src="#right-image-2"
-                    position="0.2 -0.13 0.01"
-                  ></a-image>
-                </a-entity>
-                <!-- Page 3 -->
-                <a-entity id="right-page-3" visible="false">
-                  <a-image
-                    width="4"
-                    height="2.3"
-                    src="#right-image-3"
-                    position="0.2 -0.13 0.01"
-                  ></a-image>
-                </a-entity>
-                <!-- Page 4 -->
-                <a-entity id="right-page-4" visible="false">
-                  <a-image
-                    width="4"
-                    height="2.3"
-                    src="#right-image-4"
-                    position="0.2 -0.13 0.01"
-                  ></a-image>
-                </a-entity>
-                <!-- Page 5 -->
-                <a-entity id="right-page-5" visible="false">
-                  <a-image
-                    width="4"
-                    height="2.3"
-                    src="#right-image-5"
-                    position="0.2 -0.13 0.01"
-                  ></a-image>
-                </a-entity>
-                <!-- Page 6 -->
-                <a-entity id="right-page-6" visible="false">
-                  <a-image
-                    id="gallery-main"
-                    width="4"
-                    height="1.8"
-                    src="#gallery-1"
-                    position="0.2 0.1 0.01"
-                  ></a-image>
-                  <a-entity id="gallery-nav" position="0 -1.1 0.02" page="1" selected="1">
-                    <a-image
-                      width="0.6"
-                      height="0.6"
-                      src="#idaman-logo"
-                      position="-2.07 0.05 0"
-                      class="right-click"
-                    ></a-image>
-                    <a-image
-                      id="gallery-prev-button"
-                      width="0.2"
-                      height="0.2"
-                      src="#left-button-disabled"
-                      position="-1.6 0 0"
-                      class="right-click"
-                    ></a-image>
-                    <a-image
-                      width="0.7"
-                      height="0.4"
-                      src="#gallery-1-small"
-                      position="-1 0 0"
-                      class="right-click gallery-button"
-                      num="1"
-                    ></a-image>
-                    <a-image
-                      width="0.7"
-                      height="0.4"
-                      src="#gallery-2-small"
-                      position="-0.2 0 0"
-                      class="right-click gallery-button"
-                      num="2"
-                    ></a-image>
-                    <a-image
-                      width="0.7"
-                      height="0.4"
-                      src="#gallery-3-small"
-                      position="0.6 0 0"
-                      class="right-click gallery-button"
-                      num="3"
-                    ></a-image>
-                    <a-image
-                      width="0.7"
-                      height="0.4"
-                      src="#gallery-4-small"
-                      position="1.4 0 0"
-                      class="right-click gallery-button"
-                      num="4"
-                    ></a-image>
-                    <a-image
-                      id="gallery-next-button"
-                      width="0.2"
-                      height="0.2"
-                      src="#right-button"
-                      position="1.95 0 0"
-                      class="right-click"
-                    ></a-image>
-                    <a-plane
-                      id="gallery-button-border"
-                      width="0.75"
-                      height="0.45"
-                      material="color:#00b050;"
-                      position="-1 0 -0.01"
-                    ></a-plane>
-                  </a-entity>
-                </a-entity>
-                <!-- Page 7 -->
-                <a-entity id="right-page-7" visible="false">
-                  <a-image
-                    width="4"
-                    height="2.3"
-                    src="#right-image-7"
-                    position="0.2 -0.13 0.01"
-                  ></a-image>
-                  <a-plane
-                    width="1.6"
-                    height="0.4"
-                    position="-0.7 -0.6 0.02"
-                    side="double"
-                    visible="false"
-                    class="lphs-button right-click"
-                  ></a-plane>
-                </a-entity>
-              </a-entity>
-            </a-box>
-
-            <a-entity id="circle-panel">
-              <a-circle id="main-entity" radius="1.5" src="#circle-panel-front" side="double">
-                <a-image src="#logo-white" width="1.6" height="0.7" position="0 0.15 0.1">
-                </a-image>
-              </a-circle>
-
-              <a-circle
-                radius="1.5"
-                src="#circle-panel-back"
-                side="double"
-                repeat="-1 1"
-                position="0 0 -0.2"
-              >
-                <a-plane
-                  width="1.5"
-                  height="0.4"
-                  position="0 -0.45 -0.01"
-                  side="double"
-                  visible="false"
-                  class="clickable contact-button"
-                ></a-plane
-              ></a-circle>
-            </a-entity>
-          </a-entity>
-        </a-entity>
-      </a-scene>
-      <a
-        id="contact-link"
-        href="http://kwasadamansara.com.my/contact-us"
-        target="_blank"
-        rel="noreferrer noopener"
-        style="opacity: 0; z-index: -2; position: absolute; bottom: 0"
-      ></a>
-      <a
-        id="download-link"
-        href="./public/kwasa/Kwasa_Damansara_Map.pdf"
-        target="_blank"
-        rel="noreferrer noopener"
-        style="opacity: 0; z-index: -2; position: absolute; bottom: 0"
-      ></a>
-      <a
-        id="lphs-link"
-        href="https://lphs.gov.my/"
-        target="_blank"
-        rel="noreferrer noopener"
-        style="opacity: 0; z-index: -2; position: absolute; bottom: 0"
-      ></a>
-
-      <div id="dom-overlay">
-        <div id="video-container" style="display: none">
-          <div style="position: relative; width: 100%">
-            <video
-              id="video-player"
-              crossorigin="anonymous"
-              controls="true"
-              controlslist="nodownload nofullscreen noremoteplayback"
-              src="./public/kwasa/1/video.mp4"
-            ></video>
-            <img
-              id="video-close-button"
-              src="./public/images/panel/close-button.webp"
-              width="24px"
-              height="24px"
-              style="position: absolute; top: 10px; right: 10px; cursor: pointer"
-            />
-          </div>
+                <img
+                    id="open-instructions"
+                    src="./public/images/panel/instruction-button.webp"
+                    width="32px"
+                    height="32px"
+                    style="cursor: pointer"
+                />
+            </div>
+            <div id="instructions-container" style="display: none">
+                <div id="instructions">
+                    <img id="position-gif" src="./public/images/positioning.gif" />
+                    <img id="drag-gif" src="./public/images/drag_and_click.gif" />
+                    <img id="close-instructions" src="./public/images/panel/close-button.webp" />
+                    <img
+                        id="right-button-instruction-active"
+                        class="right-buttons"
+                        src="./public/images/panel/right-button.webp"
+                        width="30px"
+                        height="30px"
+                        style="position: absolute; right: 8px; cursor: pointer; display: block"
+                    />
+                    <img
+                        id="right-button-instruction-inactive"
+                        class="right-buttons"
+                        src="./public/images/panel/right-button-disabled.webp"
+                        width="30px"
+                        height="30px"
+                        style="position: absolute; right: 8px; cursor: pointer; display: none"
+                    />
+                    <img
+                        id="left-button-instruction-active"
+                        class="left-buttons"
+                        src="./public/images/panel/left-button.webp"
+                        width="30px"
+                        height="30px"
+                        style="position: absolute; left: 8px; cursor: pointer; display: none"
+                    />
+                    <img
+                        id="left-button-instruction-inactive"
+                        class="left-buttons"
+                        src="./public/images/panel/left-button-disabled.webp"
+                        width="30px"
+                        height="30px"
+                        style="position: absolute; left: 8px; cursor: pointer; display: block"
+                    />
+                    <img
+                        id="instruction-dot1"
+                        src="./public/images/panel/KDAR-_Instruction01.png"
+                        width="28px"
+                        height="12px"
+                        class="page-dots"
+                    />
+                    <img
+                        id="instruction-dot2"
+                        src="./public/images/panel/KDAR-_Instruction02.png"
+                        width="28px"
+                        height="12px"
+                        class="page-dots"
+                    />
+                </div>
+            </div>
+            <div id="dom-overlay-message" style="display: none">Enter AR to start.</div>
         </div>
-        <div id="logger" style="display: none"></div>
-        <div id="loading-screen">
-          <div class="lds-ring" style="position: absolute; bottom: 30%">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-          <button id="ar-button" style="display: none">Masuk AR</button>
-        </div>
-        <div id="dom-nav" style="display: none">
-          <img
-            id="reload-button"
-            src="./public/images/panel/reload-button.webp"
-            width="32px"
-            height="32px"
-            style="margin-right: 10px; cursor: pointer"
-          />
-          <img
-            id="open-instructions"
-            src="./public/images/panel/instruction-button.webp"
-            width="32px"
-            height="32px"
-            style="cursor: pointer"
-          />
-        </div>
-        <div id="instructions-container" style="display: none">
-          <div id="instructions">
-            <img id="position-gif" src="./public/images/positioning.gif" />
-            <img id="drag-gif" src="./public/images/drag_and_click.gif" />
-            <img id="close-instructions" src="./public/images/panel/close-button.webp" />
-            <img
-              id="right-button-instruction-active"
-              class="right-buttons"
-              src="./public/images/panel/right-button.webp"
-              width="30px"
-              height="30px"
-              style="position: absolute; right: 8px; cursor: pointer; display: block"
-            />
-            <img
-              id="right-button-instruction-inactive"
-              class="right-buttons"
-              src="./public/images/panel/right-button-disabled.webp"
-              width="30px"
-              height="30px"
-              style="position: absolute; right: 8px; cursor: pointer; display: none"
-            />
-            <img
-              id="left-button-instruction-active"
-              class="left-buttons"
-              src="./public/images/panel/left-button.webp"
-              width="30px"
-              height="30px"
-              style="position: absolute; left: 8px; cursor: pointer; display: none"
-            />
-            <img
-              id="left-button-instruction-inactive"
-              class="left-buttons"
-              src="./public/images/panel/left-button-disabled.webp"
-              width="30px"
-              height="30px"
-              style="position: absolute; left: 8px; cursor: pointer; display: block"
-            />
-            <img
-              id="instruction-dot1"
-              src="./public/images/panel/KDAR-_Instruction01.png"
-              width="28px"
-              height="12px"
-              class="page-dots"
-            />
-            <img
-              id="instruction-dot2"
-              src="./public/images/panel/KDAR-_Instruction02.png"
-              width="28px"
-              height="12px"
-              class="page-dots"
-            />
-          </div>
-        </div>
-        <div id="dom-overlay-message" style="display: none">Enter AR to start.</div>
-      </div>
-    </div>
-  </body>
+        <a-scene
+            xrweb="allowedDevices: mobile"
+            vr-mode-ui="enabled: false"
+            xrextras-almost-there
+            xrextras-loading
+            xrextras-runtime-error
+            xrextras-gesture-detector
+            renderer="colorManagement: true; physicallyCorrectLights: true;">
+
+            <a-camera
+                id="camera"
+                position="0 8 0"
+                raycaster="objects: .clickable"
+                cursor="fuse: false; rayOrigin: mouse;"
+                fov="15">
+            </a-camera>
+
+            <a-assets>
+                <!-- Default -->
+                <img id="reticle-img" src="./public/images/panel/reticle.webp" crossorigin="anonymous" />
+                <img id="logo-black" src="./public/images/logo.webp" />
+                <img id="logo-white" src="./public/images/logo-white.webp" />
+                <img id="footer" src="./public/images/footer.webp" />
+                <!-- Circle Panel -->
+                <img id="circle-panel-base" src="./public/images/new/main-controller.webp" />
+                <img id="circle-panel-front" src="./public/images/new/main-panel-front.webp" />
+                <img id="circle-panel-back" src="./public/images/new/main-panel-back.webp" />
+                <!-- Standard Panel -->
+                <img id="divider" src="./public/images/panel/divider.webp" />
+                <img id="panel" src="./public/images/panel/panel.webp" />
+                <img id="last-button" src="./public/images/panel/last-button.webp" />
+                <img id="right-button" src="./public/images/panel/right-button.webp" />
+                <img id="right-button-disabled" src="./public/images/panel/right-button-disabled.webp" />
+                <img id="left-button" src="./public/images/panel/left-button.webp" />
+                <img id="left-button-disabled" src="./public/images/panel/left-button-disabled.webp" />
+                <img id="contact-button" src="./public/images/panel/contact-button.webp" />
+                <img id="close-button" src="./public/images/panel/close-button.webp" />
+                <img id="download-button" src="./public/images/panel/download-button.webp" />
+                <img id="idaman-logo" src="./public/images/panel/idaman-logo.webp" />
+      
+                <!-- Left Pages -->
+                <!-- Left Page 1 -->
+                <video
+                    id="left-video-1"
+                    crossorigin="anonymous"
+                    autoplay
+                    loop
+                    muted
+                    controls="false"
+                    src="./public/kwasa/1/video.mp4"
+                    playsinline
+                    webkit-playsinline>
+                </video>
+                <img id="left-text-1" src="./public/kwasa/1/text.webp" />
+                <!-- Left Page 2-17 -->
+                <img id="left-image-2" src="./public/kwasa/2.webp" />
+                <video
+                    id="left-video-3"
+                    src="./public/kwasa/3.mp4"
+                    crossorigin="anonymous"
+                    autoplay
+                    loop
+                    muted
+                    controls="false"
+                    playsinline
+                    webkit-playsinline>
+                </video>
+                <img id="left-image-4" src="./public/kwasa/4.webp" />
+                <video
+                    id="left-video-5"
+                    src="./public/kwasa/5.mp4"
+                    crossorigin="anonymous"
+                    autoplay
+                    loop
+                    muted
+                    controls="false"
+                    playsinline
+                    webkit-playsinline>
+                </video>
+                <video
+                    id="left-video-6"
+                    src="./public/kwasa/6.mp4"
+                    crossorigin="anonymous"
+                    autoplay
+                    loop
+                    muted
+                    controls="false"
+                    playsinline
+                    webkit-playsinline>
+                </video>
+                <video
+                    id="left-video-7"
+                    src="./public/kwasa/7.mp4"
+                    crossorigin="anonymous"
+                    autoplay
+                    loop
+                    muted
+                    controls="false"
+                    playsinline
+                    webkit-playsinline>
+                </video>
+                <img id="left-image-8" src="./public/kwasa/8.webp" />
+                <img id="left-image-9" src="./public/kwasa/9.webp" />
+                <img id="left-image-10" src="./public/kwasa/10.webp" />
+                <img id="left-image-11" src="./public/kwasa/11.webp" />
+                <img id="left-image-12" src="./public/kwasa/12.webp" />
+                <img id="left-image-13" src="./public/kwasa/13.webp" />
+                <img id="left-image-14" src="./public/kwasa/14.webp" />
+                <img id="left-image-15" src="./public/kwasa/15.webp" />
+                <img id="left-image-16" src="./public/kwasa/16.webp" />
+                <img id="left-image-17" src="./public/kwasa/17.webp" />
+      
+                <!-- Right Pages -->
+                <!-- Right Page 1 -->
+                <video
+                    id="right-video-1"
+                    crossorigin="anonymous"
+                    autoplay
+                    loop
+                    muted
+                    controls="false"
+                    src="./public/selangorku/1/video.mp4"
+                    playsinline
+                    webkit-playsinline>
+                </video>
+                <img id="right-text-1" src="./public/selangorku/1/text.webp" />
+                <!-- Right Page 2 - 7 -->
+                <img id="right-image-2" src="./public/selangorku/2.webp" />
+                <img id="right-image-3" src="./public/selangorku/3.webp" />
+                <img id="right-image-4" src="./public/selangorku/4.webp" />
+                <img id="right-image-5" src="./public/selangorku/5.webp" />
+                <img id="right-image-7" src="./public/selangorku/7.webp" />
+                <!-- Right Gallery Big 1 - 9 -->
+                <img id="gallery-1" src="./public/selangorku/gallery/1.webp" />
+                <img id="gallery-2" src="./public/selangorku/gallery/2.webp" />
+                <img id="gallery-3" src="./public/selangorku/gallery/3.webp" />
+                <img id="gallery-4" src="./public/selangorku/gallery/4.webp" />
+                <img id="gallery-5" src="./public/selangorku/gallery/5.webp" />
+                <img id="gallery-6" src="./public/selangorku/gallery/6.webp" />
+                <img id="gallery-7" src="./public/selangorku/gallery/7.webp" />
+                <img id="gallery-8" src="./public/selangorku/gallery/8.webp" />
+                <img id="gallery-9" src="./public/selangorku/gallery/9.webp" />
+                <!-- Right Gallery Small 1 - 9 -->
+                <img id="gallery-1-small" src="./public/selangorku/gallery/1-small.webp" />
+                <img id="gallery-2-small" src="./public/selangorku/gallery/2-small.webp" />
+                <img id="gallery-3-small" src="./public/selangorku/gallery/3-small.webp" />
+                <img id="gallery-4-small" src="./public/selangorku/gallery/4-small.webp" />
+                <img id="gallery-5-small" src="./public/selangorku/gallery/5-small.webp" />
+                <img id="gallery-6-small" src="./public/selangorku/gallery/6-small.webp" />
+                <img id="gallery-7-small" src="./public/selangorku/gallery/7-small.webp" />
+                <img id="gallery-8-small" src="./public/selangorku/gallery/8-small.webp" />
+                <img id="gallery-9-small" src="./public/selangorku/gallery/9-small.webp" />
+            </a-assets>
+
+        </a-scene>
+    </body>
 </html>
