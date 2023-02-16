@@ -1,28 +1,23 @@
 function setupSceneListener() {
   const sceneEl = document.querySelector("a-scene");
-  const message = document.getElementById("dom-overlay-message");
 
   const loadingScreen = document.querySelector("#loading-screen");
   const instructions = document.querySelector("#instructions-container");
   const domNav = document.querySelector("#dom-nav");
-
-  message.addEventListener("beforexrselect", (e) => {
-    e.preventDefault();
-  });
+  const target = document.querySelector("#poster-target");
+  const videoContainer = document.querySelector("#video-container");
+  setHitTest(true);
 
   sceneEl.addEventListener("enter-vr", function () {
-    console.log('enter vr')
     if (this.is("ar-mode")) {
-      loadingScreen.setAttribute("style", "display:none");
-      // instructions.setAttribute("style", "display:flex");
-      domNav.setAttribute("style", "display:flex");
-      message.setAttribute("style", "display:block");
-      message.textContent = "";
-      const self = this;
+      videoContainer.setAttribute("style", "display: none");
+      loadingScreen.setAttribute("style", "display: none");
+      // instructions.setAttribute("style", "display: flex");
+      domNav.setAttribute("style", "display: flex");
       this.addEventListener(
         "ar-hit-test-start",
         function () {
-          message.innerHTML = `Scanning environment, finding surface.`;
+          setMessage(true, `Scanning environment, finding surface.`);
         },
         { once: true }
       );
@@ -30,29 +25,37 @@ function setupSceneListener() {
       this.addEventListener(
         "ar-hit-test-achieved",
         function () {
-          message.innerHTML = `Select the location to place the object<br />by tapping on the screen.`;
+          setMessage(
+            true,
+            `Select the location to place the poster<br />by tapping on the screen.`
+          );
         },
         { once: true }
       );
-      this.addEventListener("ar-hit-test-select", function () {
-        message.innerHTML = `Done hit testing!`;
-        self.setAttribute(
-          "ar-hit-test",
-          "target:#poster-target;type:map;mapSize:0.5 0.5;enabled:false"
-        );
+      this.addEventListener("ar-hit-test-select", function (e) {
+        try {
+          setMessage(false, "");
+
+          target.object3D.position.copy(e.detail.position);
+          target.object3D.position.y += 1;
+          target.object3D.rotation.setFromQuaternion(e.detail.orientation);
+
+          setARCursor(true);
+          setHitTest(false);
+        } catch (error) {
+          console.log(error);
+        }
       });
     }
-
-    sceneEl.addEventListener("exit-vr", function () {
-      loadingScreen.setAttribute("style", "display:flex");
-      instructions.setAttribute("style", "display:none");
-      domNav.setAttribute("style", "display:none");
-      message.setAttribute("style", "display:none");
-      self.setAttribute(
-        "ar-hit-test",
-        "target:#poster-target;type:map;mapSize:0.5 0.5;enabled:true"
-      );
-    });
+  });
+  sceneEl.addEventListener("exit-vr", function () {
+    loadingScreen.setAttribute("style", "display: flex");
+    instructions.setAttribute("style", "display: none");
+    domNav.setAttribute("style", "display: none");
+    setMessage(false);
+    videoContainer.setAttribute("style", "display: none");
+    setHitTest(true);
+    setARCursor(false);
   });
 }
 
@@ -68,33 +71,39 @@ function openFullscreen(elem) {
   }
 }
 
-function setupFindUsListeners() {
-  console.log('setupFindUsListeners')
-  const link = document.querySelector("#find-us-link");
-  const els = document.querySelectorAll(".contact-button");
-  for (let el of els) {
+function setupLinkListeners() {
+  const lphsLink = document.querySelector("#lphs-link");
+  const lphsEls = document.querySelectorAll(".lphs-button");
+  for (let el of lphsEls) {
     el.addEventListener("click", function () {
-      link.click();
+      lphsLink.click();
     });
   }
-}
-function setupDownloadListener() {
-  console.log('setupDownloadListener')
-  const link = document.querySelector("#download-link");
-  const els = document.querySelectorAll(".download-pdf");
-  for (let el of els) {
+  const contactLink = document.querySelector("#contact-link");
+  const contactEls = document.querySelectorAll(".contact-button");
+  for (let el of contactEls) {
     el.addEventListener("click", function () {
-      link.click();
+      contactLink.click();
+    });
+  }
+  const downloadLink = document.querySelector("#download-link");
+  const downloadEls = document.querySelectorAll(".download-pdf");
+  for (let el of downloadEls) {
+    el.addEventListener("click", function () {
+      downloadLink.click();
     });
   }
 }
 
 function setupVideoPlayerListeners() {
-  console.log('setupVideoPlayerListeners')
+  const container = document.querySelector("#video-container");
+  const videoClose = document.querySelector("#video-close-button");
+  const domNav = document.querySelector("#dom-nav");
+
   const player = document.querySelector("#video-player");
   const els = document.querySelectorAll(".video-element");
   for (let el of els) {
-    el.addEventListener("click", function (event) {
+    el.addEventListener("click", function () {
       try {
         if (!player.paused) {
           player.pause();
@@ -103,12 +112,23 @@ function setupVideoPlayerListeners() {
         player.setAttribute("src", videoEl.src);
         player.load();
         player.play();
-        openFullscreen(player);
+        container.setAttribute("style", "display: flex");
+        setARCursor(false);
+        domNav.setAttribute("style", "display: none");
       } catch (error) {
         console.log(error);
       }
     });
   }
+
+  videoClose.addEventListener("click", function () {
+    if (!player.paused) {
+      player.pause();
+    }
+    container.setAttribute("style", "display: none");
+    domNav.setAttribute("style", "display: flex");
+    setARCursor(true);
+  });
 }
 
 function setupGalleryNavListeners() {
@@ -195,7 +215,7 @@ async function setupPageNavListeners(type) {
   const lastButton = document.querySelector(`#${type}-panel-last-button`);
   const closeButton = document.querySelector(`#${type}-panel-close-button`);
   const isLeft = type === "left";
-  const limit = isLeft ? 19 : 7;
+  const limit = isLeft ? 18 : 8;
 
   lastButton.addEventListener("click", function () {
     const content = document.querySelector(`#${type}-panel-content`);
@@ -237,74 +257,68 @@ function setupNavListeners() {
 
 function overlayListeners() {
   const arButton = document.querySelector("#ar-button");
-  const leftButtonInstructionActive = document.querySelector("#left-button-instruction-active")
-  const leftButtonInstructionInactive = document.querySelector("#left-button-instruction-inactive")
-  const rightButtonInstructionActive = document.querySelector("#right-button-instruction-active")
-  const rightButtonInstructionInactive = document.querySelector("#right-button-instruction-inactive")
-  const instructionsDot1 = document.querySelector("#instruction-dot1")
-  const instructionsDot2 = document.querySelector("#instruction-dot2")
+  const leftButtonInstructionActive = document.querySelector("#left-button-instruction-active");
+  const leftButtonInstructionInactive = document.querySelector("#left-button-instruction-inactive");
+  const rightButtonInstructionActive = document.querySelector("#right-button-instruction-active");
+  const rightButtonInstructionInactive = document.querySelector(
+    "#right-button-instruction-inactive"
+  );
+  const positionGif = document.querySelector("#position-gif");
+  const dragGif = document.querySelector("#drag-gif");
+  const instructionsDot1 = document.querySelector("#instruction-dot1");
+  const instructionsDot2 = document.querySelector("#instruction-dot2");
   const instructions = document.querySelector("#instructions-container");
   const closeInstructions = document.querySelector("#close-instructions");
   const openInstructions = document.querySelector("#open-instructions");
   const reloadHitTest = document.querySelector("#reload-button");
-  
+  const poster = document.querySelector("#poster-target");
+
   rightButtonInstructionActive.addEventListener("click", function () {
-    rightButtonInstructionActive.style.display = "none"
-    rightButtonInstructionInactive.style.display = "block"
-    leftButtonInstructionActive.style.display = "block"
-    leftButtonInstructionInactive.style.display = "none"
-    instructionsDot1.style.display = "none"
-    instructionsDot2.style.display = "block"
-  })
-  
+    rightButtonInstructionActive.style.display = "none";
+    rightButtonInstructionInactive.style.display = "block";
+    leftButtonInstructionActive.style.display = "block";
+    leftButtonInstructionInactive.style.display = "none";
+    instructionsDot1.style.display = "none";
+    instructionsDot2.style.display = "block";
+    positionGif.style.display = "none";
+    dragGif.style.display = "block";
+  });
+
   leftButtonInstructionActive.addEventListener("click", function () {
-    leftButtonInstructionActive.style.display = "none"
-    leftButtonInstructionInactive.style.display = "block"
-    rightButtonInstructionActive.style.display = "block"
-    rightButtonInstructionInactive.style.display = "none"
-    instructionsDot1.style.display = "block"
-    instructionsDot2.style.display = "none"
-  })
+    leftButtonInstructionActive.style.display = "none";
+    leftButtonInstructionInactive.style.display = "block";
+    rightButtonInstructionActive.style.display = "block";
+    rightButtonInstructionInactive.style.display = "none";
+    instructionsDot1.style.display = "block";
+    instructionsDot2.style.display = "none";
+    positionGif.style.display = "block";
+    dragGif.style.display = "none";
+  });
 
   arButton.addEventListener("click", function () {
     const sceneEl = document.querySelector("a-scene");
-    sceneEl.enterAR();
+    sceneEl.enterVR(true);
   });
   closeInstructions.addEventListener("click", function () {
-    // const sceneEl = document.querySelector("a-scene");
-    // sceneEl.setAttribute(
-    //   "ar-hit-test",
-    //   "target:#poster-target;type:map;mapSize:0.5 0.5;enabled:true"
-    // );
-    instructions.setAttribute("style", "display:none");
+    instructions.setAttribute("style", "display: none");
+    setARCursor(true);
   });
   openInstructions.addEventListener("click", function () {
-    // const sceneEl = document.querySelector("a-scene");
-    // sceneEl.setAttribute(
-    //   "ar-hit-test",
-    //   "target:#poster-target;type:map;mapSize:0.5 0.5;enabled:false"
-    // );
-    instructions.setAttribute("style", "display:flex");
+    instructions.setAttribute("style", "display: flex");
+    setARCursor(false);
   });
   reloadHitTest.addEventListener("click", function () {
-    const check = instructions.getAttribute("style");
-    if (check === "display:none") {
-      const sceneEl = document.querySelector("a-scene");
-      sceneEl.setAttribute(
-        "ar-hit-test",
-        "target:#poster-target;type:map;mapSize:0.5 0.5;enabled:false"
-      );
-      sceneEl.setAttribute(
-        "ar-hit-test",
-        "target:#poster-target;type:map;mapSize:0.5 0.5;enabled:true"
-      );
-    }
+    instructions.setAttribute("style", "display: none");
+    poster.setAttribute("visible", false);
+    setHitTest(false);
+    setARCursor(false);
+    setHitTest(true);
+    setMessage(true, `Select the location to place the poster<br />by tapping on the screen.`);
   });
 }
 
 async function init() {
-  setupFindUsListeners();
-  setupDownloadListener();
+  setupLinkListeners();
   setupVideoPlayerListeners();
   setupNavListeners();
   setupPageNavListeners("left");
@@ -316,7 +330,7 @@ async function init() {
   const spinner = document.querySelector(".lds-ring");
   const arButton = document.querySelector("#ar-button");
   setTimeout(() => {
-    spinner.setAttribute("style", "display:none");
+    spinner.setAttribute("style", "display: none");
     arButton.setAttribute(
       "style",
       `position: absolute; bottom: 33%; display: block; background-color: transparent; color: #00b050; border: 2px solid #00b050; padding-left: 20px; padding-top: 10px; padding-right: 20px; padding-bottom: 10px; font-size: 18px;`
@@ -324,7 +338,7 @@ async function init() {
   }, 3000);
 }
 
-const debug = true;
+const debug = false;
 
 document.addEventListener("DOMContentLoaded", async function () {
   try {
@@ -333,7 +347,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   } catch (error) {
     if (debug) {
       const logger = document.querySelector("#logger");
-      logger.setAttribute("style", "display:block");
+      logger.setAttribute("style", "display: block");
       const text = document.createElement("p");
       if (typeof error === "object") {
         text.innerHTML = error.message;

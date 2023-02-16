@@ -47,7 +47,7 @@ const setOpenPanel = (type, open) => {
 
 const setPanelPage = (type, content, currPage, nextPage) => {
   const isLeft = type === "left";
-  const limit = isLeft ? 19 : 7;
+  const limit = isLeft ? 18 : 8;
   const prevButton = document.querySelector(`#${type}-panel-prev-button`);
   const nextButton = document.querySelector(`#${type}-panel-next-button`);
 
@@ -107,5 +107,36 @@ const pauseVideo = (videoEl) => {
   if (videoEl && !videoEl.paused) {
     videoEl.pause();
     videoEl.currentTime = 0;
+  }
+};
+
+const setHitTest = (flag) => {
+  const sceneEl = document.querySelector("a-scene");
+  const reticle = document.querySelector("#reticle");
+  const reticleImg = document.querySelector("#reticle-img");
+  const target = document.querySelector("#poster-target");
+  target.setAttribute("visible", !flag);
+  reticle.setAttribute("visible", !flag);
+
+  sceneEl.setAttribute(
+    "ar-hit-test",
+    `target:#reticle;src:${reticleImg.src};type:map;mapSize:0.5 0.5;enabled:${flag}`
+  );
+};
+
+const setARCursor = (flag) => {
+  const arCursor = document.querySelector("#ar-cursor");
+  arCursor.setAttribute(
+    "raycaster",
+    `objects: .clickable; far:1000; near:0; showLine: true; lineColor: red; lineOpacity: 1;enabled: ${flag}`
+  );
+  arCursor.setAttribute("visible", flag);
+};
+
+const setMessage = (flag, text) => {
+  const message = document.querySelector("#dom-overlay-message");
+  message.setAttribute("style", flag ? "display: block" : "display: none");
+  if (!!text) {
+    message.innerHTML = text;
   }
 };

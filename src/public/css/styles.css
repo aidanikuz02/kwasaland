@@ -1,15 +1,15 @@
 #video-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
   position: relative;
+  background: black;
 }
 
 #video-player {
-  position: fixed;
-  z-index: -1;
-  opacity: 0;
-  right: 0;
-  bottom: 0;
-  min-width: 100%;
-  min-height: 100%;
+  width: 100%;
 }
 
 #logger {
@@ -54,7 +54,7 @@
   height: 100%;
 }
 #loading-screen {
-  background: url("../images/KDAR-_AppLoadingScreen.webp");
+  background: url("../images/loading-screen.webp");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -64,7 +64,6 @@
   width: 100%;
   height: 100%;
   position: relative;
-  z-index: 20000;
 }
 
 #instructions {
@@ -90,13 +89,21 @@
 .page-dots {
   position: absolute;
   bottom: 120px;
-  cursor: pointer
+  cursor: pointer;
 }
 
 #position-gif {
   width: 200px;
   height: 125px;
   position: absolute;
+  display: block;
+}
+
+#drag-gif {
+  width: 200px;
+  height: 125px;
+  position: absolute;
+  display: none;
 }
 
 @media only screen and (min-height: 600px) {
@@ -144,6 +151,10 @@
     bottom: 210px;
   }
 
+  #drag-gif {
+    bottom: 210px;
+  }
+
   .right-buttons {
     bottom: 245px;
   }
@@ -170,18 +181,29 @@
     height: 110px;
   }
 
+  #drag-gif {
+    left: 28px;
+    width: 150px;
+    height: 110px;
+  }
+
   .right-buttons {
     right: 30px;
   }
 }
-@media only screen and (min-height: 880px){
+@media only screen and (min-height: 880px) {
   #close-instructions {
     bottom: 75px;
   }
 
   #position-gif {
     left: 30px;
-    bottom: 100px
+    bottom: 180px
+  }
+
+  #drag-gif {
+    left: 48px;
+    bottom: 180px
   }
 
   .right-buttons {
