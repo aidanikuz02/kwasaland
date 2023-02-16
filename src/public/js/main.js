@@ -209,7 +209,7 @@ function setupLinkListeners() {
   for (let el of lphsEls) {
     el.addEventListener("mousedowm", function () {
       console.log('lphs button click')
-      lphsLink.click();
+      // lphsLink.click();
     });
   }
   const contactLink = document.querySelector("#contact-link");
@@ -217,7 +217,7 @@ function setupLinkListeners() {
   for (let el of contactEls) {
     el.addEventListener("mousedowm", function () {
       console.log('contact button click')
-      contactLink.click();
+      // contactLink.click();
     });
   }
   const downloadLink = document.querySelector("#download-link");
