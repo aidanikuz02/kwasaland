@@ -1,3 +1,4 @@
+
 const videoContainer = document.querySelector("#video-container");
 
 function setupSceneListener() {
@@ -336,7 +337,7 @@ async function init() {
   setupPageNavListeners("left");
   setupPageNavListeners("right");
   setupGalleryNavListeners();
-  setupSceneListener();
+  // setupSceneListener();
   overlayListeners();
 
   const spinner = document.querySelector(".lds-ring");
