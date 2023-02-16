@@ -164,7 +164,7 @@
           <img id="gallery-9-small" src="./public/selangorku/gallery/9-small.webp" />
         </a-assets>
 
-        <a-camera position="0 0 5" look-controls="enabled: true">
+        <!-- <a-camera position="0 0 5" look-controls="enabled: true">
           <a-entity
             id="ar-cursor"
             animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.7 0.7 0.7; to: 1 1 1; dir:alternate;loop:1;"
@@ -180,6 +180,13 @@
             visible="false"
           >
           </a-entity>
+        </a-camera> -->
+        <a-camera
+          id="camera"
+          position="0 8 0"
+          raycaster="objects: .clickable"
+          cursor="fuse: false; rayOrigin: mouse;"
+          fov="15">
         </a-camera>
         <a-light id="ambient-light" intensity="1" light="type:ambient"></a-light>
         <!-- <a-light

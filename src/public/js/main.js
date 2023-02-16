@@ -1,3 +1,5 @@
+const videoContainer = document.querySelector("#video-container");
+
 function setupSceneListener() {
   const sceneEl = document.querySelector("a-scene");
 
@@ -5,7 +7,7 @@ function setupSceneListener() {
   const instructions = document.querySelector("#instructions-container");
   const domNav = document.querySelector("#dom-nav");
   const target = document.querySelector("#poster-target");
-  const videoContainer = document.querySelector("#video-container");
+  // const videoContainer = document.querySelector("#video-container");
   setHitTest(true);
 
   sceneEl.addEventListener("enter-vr", function () {
