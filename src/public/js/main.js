@@ -311,7 +311,7 @@ AFRAME.registerComponent('splashscreen', {
       
       videoContainer.setAttribute("style", "display: none");
       loadingScreen.setAttribute("style", "display: none");
-      domNav.setAttribute("style", "display: block");
+      domNav.setAttribute("style", "display: flex");
 
       this.el.sceneEl.addEventListener('realityready', () => {
         console.log('reality ready')
