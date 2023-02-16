@@ -208,6 +208,7 @@ function setupLinkListeners() {
   const lphsEls = document.querySelectorAll(".lphs-button");
   for (let el of lphsEls) {
     el.addEventListener("click", function () {
+      console.log('lphs button click')
       lphsLink.click();
     });
   }
@@ -215,6 +216,7 @@ function setupLinkListeners() {
   const contactEls = document.querySelectorAll(".contact-button");
   for (let el of contactEls) {
     el.addEventListener("click", function () {
+      console.log('contact button click')
       contactLink.click();
     });
   }
@@ -222,6 +224,7 @@ function setupLinkListeners() {
   const downloadEls = document.querySelectorAll(".download-pdf");
   for (let el of downloadEls) {
     el.addEventListener("click", function () {
+      console.log('download button click')
       downloadLink.click();
     });
   }
