@@ -13,22 +13,6 @@
     <script src="./public/js/aframe-components.js"></script>
     <script src="./public/js/utils.js"></script>
     <script src="./public/js/main.js"></script>
-
-    <script>        
-      const onxrloaded = () => {
-
-          XR8.addCameraPipelineModules([
-              // Install a module which gets the camera feed as a UInt8Array.
-              // luminance: If true, output grayscale instead of RGBA
-              XR8.CameraPixelArray.pipelineModule({luminance: false}),
-              // Draws the camera feed
-              XR8.GlTextureRenderer.pipelineModule(),
-          ])
-
-      }
-
-      window.XR8 ? onxrloaded() : window.addEventListener('xrloaded', onxrloaded)
-  </script>
   </head>
   <body style="display: flex; justify-content: center">
     <div style="position: absolute; max-width: 420px; width: 100%">
