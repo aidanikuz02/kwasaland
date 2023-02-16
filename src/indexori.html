@@ -2,10 +2,7 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="./public/css/styles.css" />
-    <script src="./public/js/mindar-image.prod.js"></script>
-    <script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
-    <script src="./public/js/mindar-image-aframe.prod.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <script src="./public/js/aframe.min.js"></script>
     <script src="./public/js/aframe-components.js"></script>
     <script src="./public/js/utils.js"></script>
     <script src="./public/js/main.js"></script>
@@ -19,11 +16,12 @@
         vr-mode-ui="enabled: false"
         device-orientation-permission-ui="enabled: false"
         webxr="optionalFeatures: hit-test, local-floor, viewer, dom-overlay; referenceSpaceType: local;overlayElement:#dom-overlay"
-        ar-hit-test="target:#poster-target;type:map;mapSize:0.5 0.5;enabled:true"
+        ar-hit-test="target:#reticle;src:#reticle-img;type:map;mapSize:0.5 0.5;enabled:true"
         embedded
       >
         <a-assets>
           <!-- Default -->
+          <img id="reticle-img" src="./public/images/panel/reticle.webp" crossorigin="anonymous" />
           <img id="logo-black" src="./public/images/logo.webp" />
           <img id="logo-white" src="./public/images/logo-white.webp" />
           <img id="footer" src="./public/images/footer.webp" />
@@ -43,7 +41,7 @@
           <img id="close-button" src="./public/images/panel/close-button.webp" />
           <img id="download-button" src="./public/images/panel/download-button.webp" />
           <img id="idaman-logo" src="./public/images/panel/idaman-logo.webp" />
-          <img id="reticle-img" src="./public/images/reticle.webp" />
+
           <!-- Left Pages -->
           <!-- Left Page 1 -->
           <video
@@ -53,30 +51,58 @@
             loop
             muted
             controls="false"
-            src="./public/kwasa/1/video.webm"
+            src="./public/kwasa/1/video.mp4"
             playsinline
             webkit-playsinline
           ></video>
           <img id="left-text-1" src="./public/kwasa/1/text.webp" />
-          <!-- Left Page 2 -->
+          <!-- Left Page 2-17 -->
+          <img id="left-image-2" src="./public/kwasa/2.webp" />
           <video
-            id="left-video-2"
+            id="left-video-3"
+            src="./public/kwasa/3.mp4"
             crossorigin="anonymous"
             autoplay
             loop
             muted
             controls="false"
-            src="./public/kwasa/2/video.webm"
             playsinline
             webkit-playsinline
           ></video>
-          <img id="left-text-2" src="./public/kwasa/2/text.webp" />
-          <!-- Left Page 3-18 -->
-          <img id="left-image-3" src="./public/kwasa/3.webp" />
           <img id="left-image-4" src="./public/kwasa/4.webp" />
-          <img id="left-image-5" src="./public/kwasa/5.webp" />
-          <img id="left-image-6" src="./public/kwasa/6.webp" />
-          <img id="left-image-7" src="./public/kwasa/7.webp" />
+          <video
+            id="left-video-5"
+            src="./public/kwasa/5.mp4"
+            crossorigin="anonymous"
+            autoplay
+            loop
+            muted
+            controls="false"
+            playsinline
+            webkit-playsinline
+          ></video>
+          <video
+            id="left-video-6"
+            src="./public/kwasa/6.mp4"
+            crossorigin="anonymous"
+            autoplay
+            loop
+            muted
+            controls="false"
+            playsinline
+            webkit-playsinline
+          ></video>
+          <video
+            id="left-video-7"
+            src="./public/kwasa/7.mp4"
+            crossorigin="anonymous"
+            autoplay
+            loop
+            muted
+            controls="false"
+            playsinline
+            webkit-playsinline
+          ></video>
           <img id="left-image-8" src="./public/kwasa/8.webp" />
           <img id="left-image-9" src="./public/kwasa/9.webp" />
           <img id="left-image-10" src="./public/kwasa/10.webp" />
@@ -87,15 +113,27 @@
           <img id="left-image-15" src="./public/kwasa/15.webp" />
           <img id="left-image-16" src="./public/kwasa/16.webp" />
           <img id="left-image-17" src="./public/kwasa/17.webp" />
-          <img id="left-image-18" src="./public/kwasa/18.webp" />
 
           <!-- Right Pages -->
-          <!-- Right Page 1 - 6 -->
-          <img id="right-image-1" src="./public/selangorku/1.webp" />
+          <!-- Right Page 1 -->
+          <video
+            id="right-video-1"
+            crossorigin="anonymous"
+            autoplay
+            loop
+            muted
+            controls="false"
+            src="./public/selangorku/1/video.mp4"
+            playsinline
+            webkit-playsinline
+          ></video>
+          <img id="right-text-1" src="./public/selangorku/1/text.webp" />
+          <!-- Right Page 2 - 7 -->
           <img id="right-image-2" src="./public/selangorku/2.webp" />
           <img id="right-image-3" src="./public/selangorku/3.webp" />
           <img id="right-image-4" src="./public/selangorku/4.webp" />
-          <img id="right-image-6" src="./public/selangorku/6.webp" />
+          <img id="right-image-5" src="./public/selangorku/5.webp" />
+          <img id="right-image-7" src="./public/selangorku/7.webp" />
           <!-- Right Gallery Big 1 - 9 -->
           <img id="gallery-1" src="./public/selangorku/gallery/1.webp" />
           <img id="gallery-2" src="./public/selangorku/gallery/2.webp" />
@@ -121,37 +159,38 @@
         <!-- <a-camera position="0 0 2"></a-camera> -->
         <a-camera position="0 0 5" look-controls="enabled: true">
           <a-entity
+            id="ar-cursor"
+            animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.7 0.7 0.7; to: 1 1 1; dir:alternate;loop:1;"
+            animation__mouseleave_1="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 150; to: 1 1 1"
+            animation__mouseleave_2="property: material.color; startEvents: mouseleave; easing: easeInCubic; dur: 150; to: #333333"
+            animation__mouseenter_1="property: scale; startEvents: mouseenter; easing: easeInCubic; dur: 150; to: 0.7 0.7 0.7"
+            animation__mouseenter_2="property: material.color; startEvents: mouseenter; easing: easeInCubic; dur: 150; to: #00b050"
             cursor="fuse: false;"
             position="0 0 -1"
             geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
-            material="color: #00b050; shader: flat"
-            raycaster="objects: .clickable; far:1000; near:0 showLine: true; lineColor: red; lineOpacity: 1"
-            ;
+            material="color: #333333; shader: flat"
+            raycaster="objects: .clickable; far:1000; near:0; showLine: true; lineColor: red; lineOpacity: 1;enabled: false"
+            visible="false"
           >
           </a-entity>
         </a-camera>
-        <a-light
-          id="dirlight-1"
-          intensity="1.4"
-          light="castShadow:true;type:directional"
-          position="10 10 10"
-        ></a-light>
-        <a-light
+        <a-light id="ambient-light" intensity="1" light="type:ambient"></a-light>
+        <!-- <a-light
           id="dirlight-2"
           intensity="1.4"
           light="castShadow:true;type:directional"
-          position="10 10 -10"
-        ></a-light>
-        <!-- <a-circle
-        id="reticle"
-        radius="0.2"
-        src="#circle-panel-base"
-        position="0 -1 0"
-        rotation="-90 0 0"
-        side="double"
-      ></a-circle> -->
-        <a-entity id="poster-target" visible="true" hide-on-enter-ar>
-          <a-entity position="0 20 0" rotation="0 0 0" scale="0.2 0.2 0.2">
+          position="0 0 -10"
+        ></a-light> -->
+        <a-box
+          id="reticle"
+          width="0.3"
+          height="0.1"
+          depth="0.2"
+          material="opacity:0"
+          hide-on-enter-ar
+        ></a-box>
+        <a-entity id="poster-target" hide-on-enter-ar>
+          <a-entity position="0 0 0" rotation="0 0 0" scale="0.2 0.2 0.2">
             <a-entity id="left-circle-panel" position="-2.2 0 0">
               <a-circle radius="0.6" src="#circle-panel-base" side="double"></a-circle>
               <a-circle
@@ -249,28 +288,21 @@
                 <!-- Page 2 -->
                 <a-entity id="left-page-2" visible="false">
                   <a-image
-                    width="0.8"
-                    height="0.9"
-                    position="-1.9 0 0"
-                    src="#left-text-2"
-                    transparent="true"
-                  ></a-image>
-                  <a-video
-                    width="3.2"
+                    width="4"
                     height="1.8"
-                    src="#left-video-2"
-                    position="0.2 0.05 0.01"
-                    class="video-element left-click"
-                  ></a-video>
+                    src="#left-image-2"
+                    position="-0.2 0.05 0.01"
+                  ></a-image>
                 </a-entity>
                 <!-- Page 3 -->
                 <a-entity id="left-page-3" visible="false">
-                  <a-image
+                  <a-video
                     width="4"
                     height="1.8"
-                    src="#left-image-3"
+                    src="#left-video-3"
                     position="-0.2 0.05 0.01"
-                  ></a-image>
+                    class="video-element"
+                  ></a-video>
                 </a-entity>
                 <!-- Page 4 -->
                 <a-entity id="left-page-4" visible="false">
@@ -280,49 +312,43 @@
                     src="#left-image-4"
                     position="-0.2 0.05 0.01"
                   ></a-image>
-                </a-entity>
-                <!-- Page 5 -->
-                <a-entity id="left-page-5" visible="false">
-                  <a-image
-                    width="4"
-                    height="1.8"
-                    src="#left-image-5"
-                    position="-0.2 0.05 0.01"
-                  ></a-image>
                   <a-image
                     width="0.7"
                     height="0.25"
                     src="#download-button"
                     position="-1.7 -0.6 0.02"
-                    class="left-click download-pdf"
+                    class="clickable download-pdf"
                   ></a-image>
+                </a-entity>
+                <!-- Page 5 -->
+                <a-entity id="left-page-5" visible="false">
+                  <a-video
+                    width="4"
+                    height="1.8"
+                    src="#left-video-5"
+                    position="-0.2 0.05 0.01"
+                    class="video-element"
+                  ></a-video>
                 </a-entity>
                 <!-- Page 6 -->
                 <a-entity id="left-page-6" visible="false">
-                  <a-image
+                  <a-video
                     width="4"
                     height="1.8"
-                    src="#left-image-6"
+                    src="#left-video-6"
                     position="-0.2 0.05 0.01"
-                  ></a-image>
+                    class="video-element"
+                  ></a-video>
                 </a-entity>
                 <!-- Page 7 -->
                 <a-entity id="left-page-7" visible="false">
-                  <a-image
+                  <a-video
                     width="4"
                     height="1.8"
-                    src="#left-image-7"
+                    src="#left-video-7"
                     position="-0.2 0.05 0.01"
-                  ></a-image>
-                </a-entity>
-                <!-- Page 3 -->
-                <a-entity id="left-page-3" visible="false">
-                  <a-image
-                    width="4"
-                    height="1.8"
-                    src="#left-image-3"
-                    position="-0.2 0.05 0.01"
-                  ></a-image>
+                    class="video-element"
+                  ></a-video>
                 </a-entity>
                 <!-- Page 8 -->
                 <a-entity id="left-page-8" visible="false">
@@ -411,15 +437,6 @@
                     width="4"
                     height="1.8"
                     src="#left-image-17"
-                    position="-0.2 0.05 0.01"
-                  ></a-image>
-                </a-entity>
-                <!-- Page 18 -->
-                <a-entity id="left-page-18" visible="false">
-                  <a-image
-                    width="4"
-                    height="1.8"
-                    src="#left-image-18"
                     position="-0.2 0.05 0.01"
                   ></a-image>
                 </a-entity>
@@ -524,11 +541,19 @@
                 <!-- Page 1 -->
                 <a-entity id="right-page-1" visible="true">
                   <a-image
-                    width="4"
-                    height="2.3"
-                    src="#right-image-1"
-                    position="0.2 -0.13 0.01"
+                    width="0.8"
+                    height="0.9"
+                    position="1.9 0 0"
+                    src="#right-text-1"
+                    transparent="true"
                   ></a-image>
+                  <a-video
+                    width="3.2"
+                    height="1.8"
+                    src="#right-video-1"
+                    position="-0.2 0.05 0.01"
+                    class="video-element right-click"
+                  ></a-video>
                 </a-entity>
                 <!-- Page 2 -->
                 <a-entity id="right-page-2" visible="false">
@@ -559,6 +584,15 @@
                 </a-entity>
                 <!-- Page 5 -->
                 <a-entity id="right-page-5" visible="false">
+                  <a-image
+                    width="4"
+                    height="2.3"
+                    src="#right-image-5"
+                    position="0.2 -0.13 0.01"
+                  ></a-image>
+                </a-entity>
+                <!-- Page 6 -->
+                <a-entity id="right-page-6" visible="false">
                   <a-image
                     id="gallery-main"
                     width="4"
@@ -631,14 +665,22 @@
                     ></a-plane>
                   </a-entity>
                 </a-entity>
-                <!-- Page 6 -->
-                <a-entity id="right-page-6" visible="false">
+                <!-- Page 7 -->
+                <a-entity id="right-page-7" visible="false">
                   <a-image
                     width="4"
                     height="2.3"
-                    src="#right-image-6"
+                    src="#right-image-7"
                     position="0.2 -0.13 0.01"
                   ></a-image>
+                  <a-plane
+                    width="1.6"
+                    height="0.4"
+                    position="-0.7 -0.6 0.02"
+                    side="double"
+                    visible="false"
+                    class="lphs-button right-click"
+                  ></a-plane>
                 </a-entity>
               </a-entity>
             </a-box>
@@ -670,23 +712,46 @@
         </a-entity>
       </a-scene>
       <a
-        id="find-us-link"
-        href="https://www.kwasadamansara.com.my/"
+        id="contact-link"
+        href="http://kwasadamansara.com.my/contact-us"
         target="_blank"
         rel="noreferrer noopener"
-        style="opacity: 0; z-index: -2"
+        style="opacity: 0; z-index: -2; position: absolute; bottom: 0"
       ></a>
       <a
         id="download-link"
-        href="https://www.kwasadamansara.com.my/"
+        href="./public/kwasa/Kwasa_Damansara_Map.pdf"
         target="_blank"
         rel="noreferrer noopener"
-        style="opacity: 0; z-index: -2"
+        style="opacity: 0; z-index: -2; position: absolute; bottom: 0"
       ></a>
-      <div id="video-container">
-        <video id="video-player" crossorigin="anonymous" loop muted controls="true"></video>
-      </div>
+      <a
+        id="lphs-link"
+        href="https://lphs.gov.my/"
+        target="_blank"
+        rel="noreferrer noopener"
+        style="opacity: 0; z-index: -2; position: absolute; bottom: 0"
+      ></a>
+
       <div id="dom-overlay">
+        <div id="video-container" style="display: none">
+          <div style="position: relative; width: 100%">
+            <video
+              id="video-player"
+              crossorigin="anonymous"
+              controls="true"
+              controlslist="nodownload nofullscreen noremoteplayback"
+              src="./public/kwasa/1/video.mp4"
+            ></video>
+            <img
+              id="video-close-button"
+              src="./public/images/panel/close-button.webp"
+              width="24px"
+              height="24px"
+              style="position: absolute; top: 10px; right: 10px; cursor: pointer"
+            />
+          </div>
+        </div>
         <div id="logger" style="display: none"></div>
         <div id="loading-screen">
           <div class="lds-ring" style="position: absolute; bottom: 30%">
@@ -715,11 +780,9 @@
         </div>
         <div id="instructions-container" style="display: none">
           <div id="instructions">
-            <img id="position-gif" src="./public/images/positioning.gif"/>
-            <img
-              id="close-instructions"
-              src="./public/images/panel/close-button.webp"
-            />
+            <img id="position-gif" src="./public/images/positioning.gif" />
+            <img id="drag-gif" src="./public/images/drag_and_click.gif" />
+            <img id="close-instructions" src="./public/images/panel/close-button.webp" />
             <img
               id="right-button-instruction-active"
               class="right-buttons"

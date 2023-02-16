@@ -330,7 +330,6 @@ async function init() {
   const spinner = document.querySelector(".lds-ring");
   const arButton = document.querySelector("#ar-button");
   setTimeout(() => {
-    console.log('run async function init, display start button')
     spinner.setAttribute("style", "display: none");
     arButton.setAttribute(
       "style",

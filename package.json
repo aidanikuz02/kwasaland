@@ -5,7 +5,7 @@
   "source": "src/index.html",
   "scripts": {
     "start": "parcel",
-    "build": "rm -rf ./dist && parcel build && cp ./src/public/ar/targets.mind ./dist/"
+    "build": "rm -rf ./dist && rm -rf ./.parcel-cache && parcel build"
   },
   "devDependencies": {
     "parcel": "^2.7.0"
