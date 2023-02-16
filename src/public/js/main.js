@@ -207,7 +207,7 @@ function setupLinkListeners() {
   const lphsLink = document.querySelector("#lphs-link");
   const lphsEls = document.querySelectorAll(".lphs-button");
   for (let el of lphsEls) {
-    el.addEventListener("click", function () {
+    el.addEventListener("mousedowm", function () {
       console.log('lphs button click')
       lphsLink.click();
     });
@@ -215,7 +215,7 @@ function setupLinkListeners() {
   const contactLink = document.querySelector("#contact-link");
   const contactEls = document.querySelectorAll(".contact-button");
   for (let el of contactEls) {
-    el.addEventListener("click", function () {
+    el.addEventListener("mousedowm", function () {
       console.log('contact button click')
       contactLink.click();
     });
@@ -223,7 +223,7 @@ function setupLinkListeners() {
   const downloadLink = document.querySelector("#download-link");
   const downloadEls = document.querySelectorAll(".download-pdf");
   for (let el of downloadEls) {
-    el.addEventListener("click", function () {
+    el.addEventListener("mousedowm", function () {
       console.log('download button click')
       downloadLink.click();
     });
