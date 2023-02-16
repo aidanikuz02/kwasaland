@@ -296,8 +296,10 @@ function overlayListeners() {
   });
 
   arButton.addEventListener("click", function () {
+    console.log('enter ar')
     const sceneEl = document.querySelector("a-scene");
-    sceneEl.enterVR(true);
+    sceneEl.setAttribute('xrweb', `disableWorldTracking: ${this.data.disableWorldTracking}`)
+    // sceneEl.enterVR(true);
   });
   closeInstructions.addEventListener("click", function () {
     instructions.setAttribute("style", "display: none");
