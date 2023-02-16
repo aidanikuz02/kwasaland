@@ -1,6 +1,7 @@
 
-const ring = document.getElementById('cursor-ring')
+let ring
 let created = false
+let placed = false
 let newElement
 
 AFRAME.registerComponent('splashscreen', {
@@ -50,14 +51,12 @@ AFRAME.registerComponent('splashscreen', {
       }
 
       this.el.sceneEl.setAttribute('xrweb', `disableWorldTracking: ${this.data.disableWorldTracking}`)
-      
-      videoContainer.setAttribute("style", "display: none");
-      loadingScreen.setAttribute("style", "display: none");
-      domNav.setAttribute("style", "display: flex");
 
       this.el.sceneEl.addEventListener('realityready', () => {
         console.log('reality ready')
-
+        videoContainer.setAttribute("style", "display: none");
+        loadingScreen.setAttribute("style", "display: none");
+        domNav.setAttribute("style", "display: flex");
         ring.setAttribute('visible', 'true')
       })
     }
@@ -73,14 +72,14 @@ AFRAME.registerComponent("tap-place", {
     this.camera = document.getElementById('camera')
     this.threeCamera = this.camera.getObject3D('camera')
     this.ground = document.getElementById('ground')
-    const ring = document.getElementById('cursor-ring')
 
     // 2D coordinates of the raycast origin, in normalized device coordinates (NDC)---X and Y
     // components should be between -1 and 1.  Here we want the cursor in the center of the screen.
     this.rayOrigin = new THREE.Vector2(0, 0)
     this.cursorLocation = new THREE.Vector3(0, 0, 0)
 
-    this.el.sceneEl.addEventListener('realityready', () => { 
+    this.el.sceneEl.addEventListener('realityready', () => {
+      ring = document.getElementById('cursor-ring') 
       newElement = document.getElementById('ar-content')
 
       const createElement = () => {
@@ -101,12 +100,15 @@ AFRAME.registerComponent("tap-place", {
           ring.setAttribute('visible', 'false')
   
           created = true
+          placed = true
   
           this.ground.removeEventListener('mousedown', createElement)
         }
       }
 
-      this.ground.addEventListener('mousedown', createElement)
+      if(!placed) {
+        this.ground.addEventListener('mousedown', createElement)
+      }
     })
   },
   tick() {
@@ -133,50 +135,50 @@ function setupSceneListener() {
   // const videoContainer = document.querySelector("#video-container");
   setHitTest(true);
 
-  sceneEl.addEventListener("enter-vr", function () {
-    console.log('enter vr event listener')
-    videoContainer.setAttribute("style", "display: none");
-    loadingScreen.setAttribute("style", "display: none");
-    domNav.setAttribute("style", "display: block");
-    // if (this.is("ar-mode")) {
-    //   videoContainer.setAttribute("style", "display: none");
-    //   loadingScreen.setAttribute("style", "display: none");
-    //   // instructions.setAttribute("style", "display: flex");
-    //   domNav.setAttribute("style", "display: flex");
-    //   this.addEventListener(
-    //     "ar-hit-test-start",
-    //     function () {
-    //       setMessage(true, `Scanning environment, finding surface.`);
-    //     },
-    //     { once: true }
-    //   );
+  // sceneEl.addEventListener("enter-vr", function () {
+  //   console.log('enter vr event listener')
+  //   videoContainer.setAttribute("style", "display: none");
+  //   loadingScreen.setAttribute("style", "display: none");
+  //   domNav.setAttribute("style", "display: block");
+  //   // if (this.is("ar-mode")) {
+  //   //   videoContainer.setAttribute("style", "display: none");
+  //   //   loadingScreen.setAttribute("style", "display: none");
+  //   //   // instructions.setAttribute("style", "display: flex");
+  //   //   domNav.setAttribute("style", "display: flex");
+  //   //   this.addEventListener(
+  //   //     "ar-hit-test-start",
+  //   //     function () {
+  //   //       setMessage(true, `Scanning environment, finding surface.`);
+  //   //     },
+  //   //     { once: true }
+  //   //   );
 
-    //   this.addEventListener(
-    //     "ar-hit-test-achieved",
-    //     function () {
-    //       setMessage(
-    //         true,
-    //         `Select the location to place the poster<br />by tapping on the screen.`
-    //       );
-    //     },
-    //     { once: true }
-    //   );
-    //   this.addEventListener("ar-hit-test-select", function (e) {
-    //     try {
-    //       setMessage(false, "");
+  //   //   this.addEventListener(
+  //   //     "ar-hit-test-achieved",
+  //   //     function () {
+  //   //       setMessage(
+  //   //         true,
+  //   //         `Select the location to place the poster<br />by tapping on the screen.`
+  //   //       );
+  //   //     },
+  //   //     { once: true }
+  //   //   );
+  //   //   this.addEventListener("ar-hit-test-select", function (e) {
+  //   //     try {
+  //   //       setMessage(false, "");
 
-    //       target.object3D.position.copy(e.detail.position);
-    //       target.object3D.position.y += 1;
-    //       target.object3D.rotation.setFromQuaternion(e.detail.orientation);
+  //   //       target.object3D.position.copy(e.detail.position);
+  //   //       target.object3D.position.y += 1;
+  //   //       target.object3D.rotation.setFromQuaternion(e.detail.orientation);
 
-    //       setARCursor(true);
-    //       setHitTest(false);
-    //     } catch (error) {
-    //       console.log(error);
-    //     }
-    //   });
-    // }
-  });
+  //   //       setARCursor(true);
+  //   //       setHitTest(false);
+  //   //     } catch (error) {
+  //   //       console.log(error);
+  //   //     }
+  //   //   });
+  //   // }
+  // });
   
   sceneEl.addEventListener("exit-vr", function () {
     loadingScreen.setAttribute("style", "display: flex");
@@ -386,7 +388,6 @@ function setupNavListeners() {
 }
 
 function overlayListeners() {
-  const arButton = document.querySelector("#ar-button");
   const leftButtonInstructionActive = document.querySelector("#left-button-instruction-active");
   const leftButtonInstructionInactive = document.querySelector("#left-button-instruction-inactive");
   const rightButtonInstructionActive = document.querySelector("#right-button-instruction-active");
@@ -440,12 +441,18 @@ function overlayListeners() {
     // setARCursor(false);
   });
   reloadHitTest.addEventListener("click", function () {
+    console.log('reset ar content')
     instructions.setAttribute("style", "display: none");
-    poster.setAttribute("visible", false);
-    setHitTest(false);
-    setARCursor(false);
-    setHitTest(true);
-    setMessage(true, `Select the location to place the poster<br />by tapping on the screen.`);
+    ring.setAttribute('visible','false')
+    newElement.setAttribute('visible', 'false')
+    newElement.setAttribute('scale', '0.001 0.001 0.001')
+    created = false
+    placed = false
+    // poster.setAttribute("visible", false);
+    // setHitTest(false);
+    // setARCursor(false);
+    // setHitTest(true);
+    // setMessage(true, `Select the location to place the poster<br />by tapping on the screen.`);
   });
 }
 
@@ -453,10 +460,10 @@ async function init() {
   console.log('async function init')
   setupLinkListeners();
   setupVideoPlayerListeners();
-  // setupNavListeners();
-  // setupPageNavListeners("left");
-  // setupPageNavListeners("right");
-  // setupGalleryNavListeners();
+  setupNavListeners();
+  setupPageNavListeners("left");
+  setupPageNavListeners("right");
+  setupGalleryNavListeners();
   // setupSceneListener();
   overlayListeners();
 
