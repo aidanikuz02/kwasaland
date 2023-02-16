@@ -13,6 +13,22 @@
     <script src="./public/js/aframe-components.js"></script>
     <script src="./public/js/utils.js"></script>
     <script src="./public/js/main.js"></script>
+
+    <script>        
+      const onxrloaded = () => {
+
+          XR8.addCameraPipelineModules([
+              // Install a module which gets the camera feed as a UInt8Array.
+              // luminance: If true, output grayscale instead of RGBA
+              XR8.CameraPixelArray.pipelineModule({luminance: false}),
+              // Draws the camera feed
+              XR8.GlTextureRenderer.pipelineModule(),
+          ])
+
+      }
+
+      window.XR8 ? onxrloaded() : window.addEventListener('xrloaded', onxrloaded)
+  </script>
   </head>
   <body style="display: flex; justify-content: center">
     <div style="position: absolute; max-width: 420px; width: 100%">
@@ -21,19 +37,10 @@
         color-space="sRGB"
         renderer="colorManagement: true, physicallyCorrectLights"
         vr-mode-ui="enabled: false"
-        xrweb
         xrextras-almost-there
         xrextras-loading
         xrextras-runtime-error
         xrextras-gesture-detector>
-
-        <a-camera
-          id="camera"
-          position="0 8 0"
-          raycaster="objects: .clickable"
-          cursor="fuse: false; rayOrigin: mouse;"
-          fov="15">
-        </a-camera>
         
         <a-assets>
           <!-- Default -->
@@ -171,6 +178,14 @@
           <img id="gallery-8-small" src="./public/selangorku/gallery/8-small.webp" />
           <img id="gallery-9-small" src="./public/selangorku/gallery/9-small.webp" />
         </a-assets>
+
+        <a-camera
+          id="camera"
+          position="0 8 0"
+          raycaster="objects: .clickable"
+          cursor="fuse: false; rayOrigin: mouse;"
+          fov="15">
+        </a-camera>
 
         <!-- <a-camera position="0 0 5" look-controls="enabled: true">
           <a-entity

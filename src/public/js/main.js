@@ -262,6 +262,10 @@ function setupNavListeners() {
 }
 
 AFRAME.registerComponent("8thwall-stuff", {
+  schema: {
+    disableWorldTracking: {type: 'bool', default: false},
+    requestGyro: {type: 'bool', default: false},
+  },
   init: function () {
     this.el.sceneEl.addEventListener('realityready', () => {
       console.log('reality ready')
@@ -269,9 +273,42 @@ AFRAME.registerComponent("8thwall-stuff", {
       const loadingScreen = document.querySelector("#loading-screen");
       const domNav = document.querySelector("#dom-nav");
       const arButton = document.querySelector("#ar-button");
+    
+      const cameraStatusChange = ({status}) => {
+        switch (status) {
+          case 'hasVideo':
+            console.log(`has video`)
+            break
+          case 'requesting':
+            width = 5
+            console.log(`requesting video`)
+            break
+          case 'failed':
+            console.log('camera status failed')
+          default:
+              break
+        }
+      }
+    
+      XR8.addCameraPipelineModule({
+          name: 'mycamerapipelinemodule',
+          onCameraStatusChange: cameraStatusChange,
+      })
 
       arButton.addEventListener("click", function () {
         console.log('enter ar')
+
+        if (this.data.requestGyro === true && this.data.disableWorldTracking === true) {
+          // If world tracking is disabled, and you still want gyro enabled (i.e. 3DoF mode)
+          // Request motion and orientation sensor via XR8's permission API
+          XR8.addCameraPipelineModule({
+              name: 'request-gyro',
+              requiredPermissions: () => ([XR8.XrPermissions.permissions().DEVICE_ORIENTATION]),
+          })
+        }
+
+        this.el.sceneEl.setAttribute('xrweb', `disableWorldTracking: ${this.data.disableWorldTracking}`)
+
         videoContainer.setAttribute("style", "display: none");
         loadingScreen.setAttribute("style", "display: none");
         domNav.setAttribute("style", "display: block");
