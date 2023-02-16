@@ -302,7 +302,30 @@
                 visible="false">
             </a-ring>
 
-            <a-entity id="poster-target">
+            <a-entity id="circle-panel">
+                <a-circle id="main-entity" radius="1.5" src="#circle-panel-front" side="double">
+                    <a-image src="#logo-white" width="1.6" height="0.7" position="0 0.15 0.1">
+                    </a-image>
+                </a-circle>
+
+                <a-circle
+                    radius="1.5"
+                    src="#circle-panel-back"
+                    side="double"
+                    repeat="-1 1"
+                    position="0 0 -0.2">
+                    <a-plane
+                        width="1.5"
+                        height="0.4"
+                        position="0 -0.45 -0.01"
+                        side="double"
+                        visible="false"
+                        class="clickable contact-button">
+                    </a-plane>
+                </a-circle>
+            </a-entity>
+
+            <!-- <a-entity id="poster-target">
                 <a-entity position="0 0 0" rotation="0 0 0" scale="0.2 0.2 0.2">
                     <a-entity id="left-circle-panel" position="-2.2 0 0">
                         <a-circle radius="0.6" src="#circle-panel-base" side="double"></a-circle>
@@ -379,7 +402,6 @@
                             ></a-image>
                         </a-entity>
                         <a-entity id="left-panel-content" position="0 0 0.11" page="1">
-                            <!-- Page 1 -->
                             <a-entity id="left-page-1" visible="true">
                                 <a-image
                                 width="0.8"
@@ -396,7 +418,6 @@
                                 class="video-element left-click"
                                 ></a-video>
                             </a-entity>
-                            <!-- Page 2 -->
                             <a-entity id="left-page-2" visible="false">
                                 <a-image
                                     width="4"
@@ -405,7 +426,6 @@
                                     position="-0.2 0.05 0.01"
                                 ></a-image>
                             </a-entity>
-                            <!-- Page 3 -->
                             <a-entity id="left-page-3" visible="false">
                                 <a-video
                                     width="4"
@@ -415,7 +435,6 @@
                                     class="video-element"
                                 ></a-video>
                             </a-entity>
-                            <!-- Page 4 -->
                             <a-entity id="left-page-4" visible="false">
                                 <a-image
                                     width="4"
@@ -431,7 +450,6 @@
                                     class="clickable download-pdf"
                                 ></a-image>
                             </a-entity>
-                            <!-- Page 5 -->
                             <a-entity id="left-page-5" visible="false">
                                 <a-video
                                     width="4"
@@ -441,7 +459,6 @@
                                     class="video-element"
                                 ></a-video>
                             </a-entity>
-                            <!-- Page 6 -->
                             <a-entity id="left-page-6" visible="false">
                                 <a-video
                                     width="4"
@@ -451,7 +468,6 @@
                                     class="video-element"
                                 ></a-video>
                             </a-entity>
-                            <!-- Page 7 -->
                             <a-entity id="left-page-7" visible="false">
                                 <a-video
                                     width="4"
@@ -461,7 +477,6 @@
                                     class="video-element"
                                 ></a-video>
                             </a-entity>
-                            <!-- Page 8 -->
                             <a-entity id="left-page-8" visible="false">
                                 <a-image
                                     width="4"
@@ -470,7 +485,6 @@
                                     position="-0.2 0.05 0.01"
                                 ></a-image>
                             </a-entity>
-                            <!-- Page 9 -->
                             <a-entity id="left-page-9" visible="false">
                                 <a-image
                                     width="4"
@@ -479,7 +493,6 @@
                                     position="-0.2 0.05 0.01"
                                 ></a-image>
                             </a-entity>
-                            <!-- Page 10 -->
                             <a-entity id="left-page-10" visible="false">
                                 <a-image
                                     width="4"
@@ -488,7 +501,6 @@
                                     position="-0.2 0.05 0.01"
                                 ></a-image>
                             </a-entity>
-                            <!-- Page 11 -->
                             <a-entity id="left-page-11" visible="false">
                                 <a-image
                                     width="4"
@@ -497,7 +509,6 @@
                                     position="-0.2 0.05 0.01"
                                 ></a-image>
                             </a-entity>
-                            <!-- Page 12 -->
                             <a-entity id="left-page-12" visible="false">
                                 <a-image
                                     width="4"
@@ -506,7 +517,6 @@
                                     position="-0.2 0.05 0.01"
                                 ></a-image>
                             </a-entity>
-                            <!-- Page 13 -->
                             <a-entity id="left-page-13" visible="false">
                                 <a-image
                                     width="4"
@@ -515,7 +525,6 @@
                                     position="-0.2 0.05 0.01"
                                 ></a-image>
                             </a-entity>
-                            <!-- Page 14 -->
                             <a-entity id="left-page-14" visible="false">
                                 <a-image
                                     width="4"
@@ -524,7 +533,6 @@
                                     position="-0.2 0.05 0.01"
                                 ></a-image>
                             </a-entity>
-                            <!-- Page 15 -->
                             <a-entity id="left-page-15" visible="false">
                                 <a-image
                                     width="4"
@@ -533,7 +541,6 @@
                                     position="-0.2 0.05 0.01"
                                 ></a-image>
                             </a-entity>
-                            <!-- Page 16 -->
                             <a-entity id="left-page-16" visible="false">
                                 <a-image
                                     width="4"
@@ -542,7 +549,6 @@
                                     position="-0.2 0.05 0.01"
                                 ></a-image>
                             </a-entity>
-                            <!-- Page 17 -->
                             <a-entity id="left-page-17" visible="false">
                                 <a-image
                                     width="4"
@@ -646,7 +652,7 @@
                             ></a-image>
                         </a-entity>
                         <a-entity id="right-panel-content" position="0 0 0.11" page="1">
-                        <!-- Page 1 -->
+                        
                         <a-entity id="right-page-1" visible="true">
                             <a-image
                                 width="0.8"
@@ -663,7 +669,6 @@
                                 class="video-element right-click"
                             ></a-video>
                         </a-entity>
-                        <!-- Page 2 -->
                         <a-entity id="right-page-2" visible="false">
                             <a-image
                                 width="4"
@@ -672,7 +677,6 @@
                                 position="0.2 -0.13 0.01"
                             ></a-image>
                         </a-entity>
-                        <!-- Page 3 -->
                         <a-entity id="right-page-3" visible="false">
                             <a-image
                                 width="4"
@@ -681,7 +685,6 @@
                                 position="0.2 -0.13 0.01"
                             ></a-image>
                         </a-entity>
-                        <!-- Page 4 -->
                         <a-entity id="right-page-4" visible="false">
                             <a-image
                                 width="4"
@@ -690,7 +693,6 @@
                                 position="0.2 -0.13 0.01"
                             ></a-image>
                         </a-entity>
-                        <!-- Page 5 -->
                         <a-entity id="right-page-5" visible="false">
                             <a-image
                                 width="4"
@@ -698,8 +700,7 @@
                                 src="#right-image-5"
                                 position="0.2 -0.13 0.01"
                             ></a-image>
-                        </a-entity>
-                        <!-- Page 6 -->
+                        </a-entity> 
                         <a-entity id="right-page-6" visible="false">
                             <a-image
                                 id="gallery-main"
@@ -772,8 +773,7 @@
                                     position="-1 0 -0.01"
                                 ></a-plane>
                             </a-entity>
-                        </a-entity>
-                        <!-- Page 7 -->
+                        </a-entity> 
                         <a-entity id="right-page-7" visible="false">
                             <a-image
                                 width="4"
@@ -816,7 +816,7 @@
                         </a-circle>
                     </a-entity>
                 </a-entity>
-            </a-entity>
+            </a-entity> -->
 
             <!-- Adding the cantap class allows the ground to be clicked -->
             <a-box
