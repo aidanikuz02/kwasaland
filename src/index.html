@@ -302,7 +302,14 @@
                 visible="true">
             </a-ring>
 
-            <a-entity id="ar-content" position="0 0 0" rotation="0 0 0" scale="0.2 0.2 0.2"  visible="false">
+            <a-entity 
+                id="ar-content"
+                position="0 0 0"
+                rotation="0 0 0"
+                scale="0.2 0.2 0.2"
+                visible="false"
+                xrextras-pinch-scale="min: 3; max: 6"
+                xrextras-one-finger-rotate>
                 <a-entity id="left-circle-panel" position="-2.2 0 0">
                     <a-circle radius="0.6" src="#circle-panel-base" side="double"></a-circle>
                     <a-circle

@@ -1,7 +1,6 @@
 
 let ring
 let created = false
-let placed = false
 let newElement
 
 AFRAME.registerComponent('splashscreen', {
@@ -104,15 +103,12 @@ AFRAME.registerComponent("tap-place", {
           ring.setAttribute('visible', 'false')
   
           created = true
-          placed = true
   
           this.ground.removeEventListener('mousedown', createElement)
         }
       }
 
-      if(!placed) {
-        this.ground.addEventListener('mousedown', createElement)
-      }
+      this.ground.addEventListener('mousedown', createElement)
     })
   },
   tick() {
@@ -451,7 +447,7 @@ function overlayListeners() {
     newElement.setAttribute('visible', 'false')
     newElement.setAttribute('scale', '0.001 0.001 0.001')
     created = false
-    placed = false
+    this.ground.addEventListener('mousedown', createElement)
     // poster.setAttribute("visible", false);
     // setHitTest(false);
     // setARCursor(false);
