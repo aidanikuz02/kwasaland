@@ -261,14 +261,31 @@ function setupNavListeners() {
   });
 }
 
+AFRAME.registerComponent("8thwall-stuff", {
+  init: function () {
+    this.el.sceneEl.addEventListener('realityready', () => {
+      console.log('reality ready')
+      const videoContainer = document.querySelector("#video-container");
+      const loadingScreen = document.querySelector("#loading-screen");
+      const domNav = document.querySelector("#dom-nav");
+      const arButton = document.querySelector("#ar-button");
+
+      arButton.addEventListener("click", function () {
+        console.log('enter ar')
+        videoContainer.setAttribute("style", "display: none");
+        loadingScreen.setAttribute("style", "display: none");
+        domNav.setAttribute("style", "display: block");
+      });
+    })
+  },
+});
+
 function overlayListeners() {
   const arButton = document.querySelector("#ar-button");
   const leftButtonInstructionActive = document.querySelector("#left-button-instruction-active");
   const leftButtonInstructionInactive = document.querySelector("#left-button-instruction-inactive");
   const rightButtonInstructionActive = document.querySelector("#right-button-instruction-active");
-  const rightButtonInstructionInactive = document.querySelector(
-    "#right-button-instruction-inactive"
-  );
+  const rightButtonInstructionInactive = document.querySelector("#right-button-instruction-inactive");
   const positionGif = document.querySelector("#position-gif");
   const dragGif = document.querySelector("#drag-gif");
   const instructionsDot1 = document.querySelector("#instruction-dot1");
@@ -301,15 +318,14 @@ function overlayListeners() {
     dragGif.style.display = "none";
   });
 
-  arButton.addEventListener("click", function () {
-    console.log('enter ar')
-    const sceneEl = document.querySelector("a-scene");
-    const videoContainer = document.querySelector("#video-container");
-    // videoContainer.setAttribute("style", "display: none");
-    loadingScreen.setAttribute("style", "display: none");
-    domNav.setAttribute("style", "display: block");
-    // sceneEl.enterVR(true);
-  });
+  // arButton.addEventListener("click", function () {
+  //   console.log('enter ar')
+  //   const sceneEl = document.querySelector("a-scene");
+  //   videoContainer.setAttribute("style", "display: none");
+  //   loadingScreen.setAttribute("style", "display: none");
+  //   domNav.setAttribute("style", "display: block");
+  //   // sceneEl.enterVR(true);
+  // });
   closeInstructions.addEventListener("click", function () {
     instructions.setAttribute("style", "display: none");
     setARCursor(true);

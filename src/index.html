@@ -17,6 +17,7 @@
   <body style="display: flex; justify-content: center">
     <div style="position: absolute; max-width: 420px; width: 100%">
       <a-scene
+        8thwall-stuff
         color-space="sRGB"
         renderer="colorManagement: true, physicallyCorrectLights"
         vr-mode-ui="enabled: false"
@@ -24,8 +25,16 @@
         xrextras-almost-there
         xrextras-loading
         xrextras-runtime-error
-        xrextras-gesture-detector
-      >
+        xrextras-gesture-detector>
+
+        <a-camera
+          id="camera"
+          position="0 8 0"
+          raycaster="objects: .clickable"
+          cursor="fuse: false; rayOrigin: mouse;"
+          fov="15">
+        </a-camera>
+        
         <a-assets>
           <!-- Default -->
           <img id="reticle-img" src="./public/images/panel/reticle.webp" crossorigin="anonymous" />
@@ -180,13 +189,7 @@
           >
           </a-entity>
         </a-camera> -->
-        <a-camera
-          id="camera"
-          position="0 8 0"
-          raycaster="objects: .clickable"
-          cursor="fuse: false; rayOrigin: mouse;"
-          fov="15">
-        </a-camera>
+        
         <a-light id="ambient-light" intensity="1" light="type:ambient"></a-light>
         <!-- <a-light
           id="dirlight-2"
