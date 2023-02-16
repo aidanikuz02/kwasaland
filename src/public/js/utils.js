@@ -114,7 +114,8 @@ const setHitTest = (flag) => {
   const sceneEl = document.querySelector("a-scene");
   const reticle = document.querySelector("#reticle");
   const reticleImg = document.querySelector("#reticle-img");
-  const target = document.querySelector("#poster-target");
+  // const target = document.querySelector("#poster-target");
+  const target = document.querySelector("#ar-content");
   target.setAttribute("visible", !flag);
   reticle.setAttribute("visible", !flag);
 

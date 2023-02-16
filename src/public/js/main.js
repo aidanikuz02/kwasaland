@@ -59,6 +59,10 @@ AFRAME.registerComponent('splashscreen', {
         domNav.setAttribute("style", "display: flex");
         ring.setAttribute('visible', 'true')
       })
+
+      this.el.sceneEl.addEventListener('realityerror', (e) => {
+        console.log(e.detail.error)
+    })
     }
 
     arButton.onclick = addXRWeb
@@ -131,7 +135,7 @@ function setupSceneListener() {
   const loadingScreen = document.querySelector("#loading-screen");
   const instructions = document.querySelector("#instructions-container");
   const domNav = document.querySelector("#dom-nav");
-  const target = document.querySelector("#poster-target");
+  // const target = document.querySelector("#poster-target");
   // const videoContainer = document.querySelector("#video-container");
   setHitTest(true);
 
@@ -400,7 +404,7 @@ function overlayListeners() {
   const closeInstructions = document.querySelector("#close-instructions");
   const openInstructions = document.querySelector("#open-instructions");
   const reloadHitTest = document.querySelector("#reload-button");
-  const poster = document.querySelector("#poster-target");
+  // const poster = document.querySelector("#poster-target");
 
   rightButtonInstructionActive.addEventListener("click", function () {
     rightButtonInstructionActive.style.display = "none";
